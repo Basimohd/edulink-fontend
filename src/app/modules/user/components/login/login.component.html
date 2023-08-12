@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+
+<body class="max-h-screen ">
+    <section class="py-24 border-red-500 bg-gray-200 min-h-screen flex items-center justify-center">
+        <div class="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl">
+            <div class="w-1/2 md:block hidden ">
+                <img src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+                    class="rounded-2xl" alt="page img">
+            </div>
+            <div class="md:w-1/2 px-5">
+                <h2 class="text-2xl font-bold text-teal-500 mb-8">Login To Your Account</h2>
+                <form class="mt-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                    <div>
+                        <p>Email Address</p>
+                        <mat-form-field appearance="outline" class="w-full mt-1">
+
+                            <mat-label>Email Address</mat-label>
+                            <input formControlName="email" matInput placeholder="Enter Email Address"
+                                class="w-full rounded-lg bg-gray-200  border focus:border-blue-500 focus:bg-white focus:outline-none"
+                                autofocus autocomplete required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <p>Password</p>
+                        <mat-form-field appearance="outline" class="w-full mt-1">
+                            <mat-label>Password</mat-label>
+                            <input formControlName="password" placeholder="Enter Password" matInput
+                                [type]="hide ? 'password' : 'text'">
+                            <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </a>
+                        </mat-form-field>
+                        <p *ngIf="loginForm.controls['password'].hasError('pattern')"
+                            class="text-red-500 -mt-6 mb-6 text-xs">Invalid Password
+                            Format</p>
+                    </div>
+
+                    <p *ngIf="passwordError" class="text-xs text-red-500">Incorrect password</p>
+                    <p *ngIf="emailError" class="text-xs text-red-500">Incorrect Email</p>
+
+                    <button type="submit" class="w-full block bg-teal-500 hover:bg-teal-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+                  px-4 py-3 ">Login</button>
+                </form>
+
+                <div class="mt-5 grid grid-cols-3 items-center text-gray-500">
+                    <hr class="border-gray-500" />
+                    <p class="text-center text-sm">OR</p>
+                    <hr class="border-gray-500" />
+                </div>
+
+                <div class="w-full rounded-xl mt-3 flex justify-center items-center text-sm " id="buttonDiv"></div>
+                
+
+                <div class="text-sm flex items-center mt-3 justify-end mr-2">
+                    <p>Dont have an account? <a routerLink="/register" class="text-blue text-align-left"
+                            style="cursor: pointer; color: teal;">Register</a></p>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section>
+</body>

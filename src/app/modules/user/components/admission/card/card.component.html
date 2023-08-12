@@ -1,0 +1,18 @@
+    <div>
+        <ng-content></ng-content>
+        <menu class="flex justify-between px-4">
+            <li>
+                <button *ngIf="!isFirstStep" class="rounded  bg-transparent text-neutral-cool-gray  px-5 py-2 font-medium" (click)="goToPreviousStep()">
+                    Go Back
+                </button>
+            </li>
+            <li>
+                <button *ngIf="!isLastStep" class="rounded  bg-blue-600 text-white hover:opacity-70 px-5 py-2 font-medium"  (click)="goToNextStep()">
+                    Next Step
+                </button>
+                <button *ngIf="isLastStep" class="rounded  bg-blue-600 text-white hover:opacity-70 px-5 py-2 font-medium"  (click)="onSubmit()">
+                    Submit
+                </button>
+            </li>
+        </menu>
+    </div>

@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+
+<main class="h-screen flex flex-col text-neutral-cool-gray w-full lg:mx-auto lg:max-w-[58.75rem] lg:mt-20 lg:flex-row grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[33.75rem] lg:shadow">
+    <app-sidebar class="bg-sidebar-image-mobile min-h-[172px] bg-cover bg-no-repeat lg:rounded-lg lg:bg-sidebar-image-desktop bg-sidebar-image-desktop"></app-sidebar>
+    <div  class="px-4 relative bg-neutral-magnolia  lg:bg-transparent lg:flex lg:flex-col lg:w-full ">
+        <router-outlet (submitted)="onSubmit()" ></router-outlet>
+    </div>
+</main>

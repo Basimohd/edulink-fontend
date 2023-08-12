@@ -1,0 +1,12 @@
+
+
+<div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <app-portal-sidebar></app-portal-sidebar>
+    <div class="ease-soft-in-out  relative h-full max-h-screen rounded-xl transition-all duration-200">
+        <app-portal-navbar></app-portal-navbar>
+        <main class="  overflow-hidden">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+
+</div>

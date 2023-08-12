@@ -1,0 +1,153 @@
+<main>
+
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <!-- Modal header -->
+        <div class="flex justify-between items-start p-5 rounded-t border-b ">
+            <h3 class="text-xl font-semibold">
+                Add Department
+            </h3>
+            <button type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="defaultModal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+        </div>
+
+
+        <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+            <div class="p-6 space-y-4">
+                <div class="grid grid-cols-6 gap-4" *ngIf="step == 1" formGroupName="step1">
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="departmentName" class="block mb-2 text-sm font-medium text-gray-900">Department
+                            Name</label>
+                        <input
+                            [ngClass]="{error : getControl('departmentName')?.errors && getControl('departmentName')?.touched}"
+                            type="text" name="departmentName" id="departmentName" formControlName="departmentName"
+                            class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                            placeholder="" required="">
+                        <div *ngIf="getControl('departmentName')?.errors && getControl('departmentName')?.touched">
+                            <small class="text-red-500">Department Name is Required</small>
+                        </div>
+                    </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="description"
+                            class="block mb-2 text-sm font-medium text-gray-900">Description</label>
+                        <textarea
+                            [ngClass]="{error : getControl('description')?.errors && getControl('description')?.touched}"
+                            name="description" id="description" formControlName="description"
+                            class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                            placeholder="" required=""></textarea>
+                        <div *ngIf="getControl('description')?.errors && getControl('description')?.touched">
+                            <small class="text-red-500">Description is Required</small>
+                        </div>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="HOD" class="block mb-2 text-sm font-medium text-gray-900">Head Of Department</label>
+                        <select name="HOD" id="HOD" formControlName="HOD"
+                            class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                            required>
+                            <option hidden value="">Select Head Of Department</option>
+                            <option *ngFor="let faculty of NonHodFacultyData" [value]="faculty._id">{{
+                                faculty.facultyName }}</option>
+                        </select>
+                        <div *ngIf="getControl('HOD')?.errors && getControl('HOD')?.touched">
+                            <small class="text-red-500">HOD should be selected</small>
+                        </div>
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="duration" class="block mb-2 text-sm font-medium text-gray-900">Duration</label>
+                        <input [ngClass]="{error : getControl('duration')?.errors && getControl('duration')?.touched}"
+                            type="number" name="duration" id="duration" formControlName="duration" appDuration
+                            class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                            placeholder="" required="">
+                        <div *ngIf="getControl('duration')?.errors && getControl('duration')?.touched">
+                            <small class="text-red-500">Duration is Required</small>
+                        </div>
+                    </div>
+
+                </div>
+                <div *ngIf="step === 2" formGroupName="step2">
+                    <div formArrayName="fees">
+                        <div *ngFor="let feeGroup of feesControls; let index = index">
+                            <div class="grid grid-cols-12 my-3  gap-5" [formGroupName]="index"
+                                [ngClass]="{ ' border-t border-gray-200': index > 0 }">
+                                <div class="col-span-2 sm:col-span-2 flex justify-center items-center">
+                                    <label class="block text-sm font-medium text-gray-900">Year {{ index + 1 }}
+                                        :</label>
+                                </div>
+                                <div class="col-span-3 sm:col-span-3">
+                                    <label for="tutionFees{{ index }}"
+                                        class="block mb-2 text-sm font-medium text-gray-900">Tuition Fees</label>
+                                    <input type="text" [id]="'tutionFees' + index" formControlName="tutionFees"
+                                        class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                                        placeholder="" required="">
+                                </div>
+                                <div class="col-span-3 sm:col-span-3">
+                                    <label for="hostelFees{{ index }}"
+                                        class="block mb-2 text-sm font-medium text-gray-900">Hostel Fees</label>
+                                    <input type="text" [id]="'hostelFees' + index" formControlName="hostelFees"
+                                        class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                                        placeholder="" required="">
+                                </div>
+                                <div class="col-span-3 sm:col-span-3">
+                                    <label for="examFees{{ index }}"
+                                        class="block mb-2 text-sm font-medium text-gray-900">Exam Fees</label>
+                                    <input type="text" [id]="'examFees' + index" formControlName="examFees"
+                                        class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                                        placeholder="" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-6 gap-4" *ngIf="step == 3" formGroupName="step3">
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="professors" class="block mb-2 text-sm font-medium text-gray-900">Assistant
+                            Professors</label>
+                        <select name="professors" id="professors"
+                            (change)="addProfessor($event)" 
+                            class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                            required>
+                            <option hidden value="" selected>Select Assistant Professors</option>
+                            <option *ngFor="let faculty of NonHodFacultyData" [value]="faculty._id">{{
+                                faculty.facultyName }}</option>
+                        </select>
+                        <div *ngIf="getControl('HOD')?.errors && getControl('HOD')?.touched">
+                            <small class="text-red-500">HOD should be selected</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-6 gap-4" *ngIf="step == 3">
+                    <!-- ... Your other form fields ... -->
+                    <div class="col-span-12">
+                      <label class="block mb-2 text-sm font-medium text-gray-900" *ngIf="professorsFormArray.controls.length">Selected Professors</label>
+                      <div *ngFor="let professor of professorsFormArray.controls; let i = index" class="flex items-center mb-2">
+                        <span class="mr-2">{{ getProfessorNameById(professor.value) }}</span>
+                        <fa-icon (click)="removeProfessor(i)" class="text-red-500 cursor-pointer" [icon]="faTrash"></fa-icon>
+                      </div>
+                    </div>
+                  </div>
+
+            </div>
+            <div class="items-center pl-6 pt-3 pb-3 rounded-b border-t border-gray-200">
+                <button (click)="previous()" *ngIf="step != 1"
+                    class="text-white rounded-lg  bg-gradient-to-tl from-purple-700 to-pink-500  shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform font-medium text-sm px-5 py-2.5 mr-2 text-center">Previous</button>
+                <button
+                    class=" text-white rounded-lg  bg-gradient-to-tl from-purple-700 to-pink-500  shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform font-medium text-sm px-5 py-2.5 mr-2 text-center"
+                    (click)="next()" *ngIf="step != 3">Next</button>
+                <button
+                    class=" text-white rounded-lg  bg-gradient-to-tl from-purple-700 to-pink-500  shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform font-medium text-sm px-5 py-2.5 mr-2 text-center"
+                    type="submit" *ngIf="step == 3">Update Department</button>
+            </div>
+        </form>
+
+    </div>
+</main>

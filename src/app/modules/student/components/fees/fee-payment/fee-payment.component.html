@@ -1,0 +1,43 @@
+
+    <div class="h-full">
+        <!-- Card -->
+        <div class="max-w-[360px] mx-auto">
+            <div class="bg-white shadow-lg rounded-lg mt-9">
+                <!-- Card header -->
+                <header class="text-center px-5 pb-5">
+                    <!-- Card name -->
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Invoice from Edulink</h3>
+                </header>
+                <!-- Card body -->
+                <div class="bg-gray-100 text-center px-5 py-4">
+                    <div class="mt- border-b py-2">
+                        <div class="flex items-center justify-between">
+                          <p class="text-sm font-medium text-gray-900">Tution Fees</p>
+                          <p class="font-semibold text-gray-900">{{data.feeArray[0] | currency:'INR'}}</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <p class="text-sm font-medium text-gray-900">Hostel Fees</p>
+                          <p class="font-semibold text-gray-900">{{data.feeArray[1] | currency:'INR'}}</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <p class="text-sm font-medium text-gray-900">Exam Fees</p>
+                          <p class="font-semibold text-gray-900">{{data.feeArray[2]  | currency:'INR'}}</p>
+                        </div>
+                      </div>
+                      <div class="mt-1 mb-4 flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">Total</p>
+                        <p class="text-xl font-semibold text-gray-900">{{ data.feeArray | sum | currency:'INR'}}</p>
+                      </div>
+                    <div class="space-y-3">
+                        <a (click)="onStripe()" class="w-[19.8125rem] flex items-center p-3 text-base font-semibold text-white rounded-lg  bg-indigo-500 hover:bg-indigo-600  group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5" viewBox="0 0 28.87 28.87" id="stripe"><g data-name="Layer 2"><g data-name="Layer 1"><rect width="28.87" height="28.87" fill="#6772e5" rx="6.48" ry="6.48"></rect><path fill="#fff" fill-rule="evenodd" d="M13.3 11.2c0-.69.57-1 1.49-1a9.84 9.84 0 0 1 4.37 1.13V7.24a11.6 11.6 0 0 0-4.36-.8c-3.56 0-5.94 1.86-5.94 5 0 4.86 6.68 4.07 6.68 6.17 0 .81-.71 1.07-1.68 1.07A11.06 11.06 0 0 1 9 17.25v4.19a12.19 12.19 0 0 0 4.8 1c3.65 0 6.17-1.8 6.17-5 .03-5.21-6.67-4.27-6.67-6.24z"></path></g></g></svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Pay With Card</span>
+                        </a>
+                        <a href="#" class="w-[19.8125rem] flex items-center p-3 text-base font-semibold text-white rounded-lg  bg-indigo-500 hover:bg-indigo-600  group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5" viewBox="0 0 28.87 28.87" id="paypal"><defs><linearGradient id="a" x1="-3.04" x2="29.49" y1="-2.41" y2="28.95" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#253b80"></stop><stop offset="1" stop-color="#179bd7"></stop></linearGradient></defs><g data-name="Layer 2"><g data-name="Layer 1"><rect width="28.87" height="28.87" fill="url(#a)" rx="6.48" ry="6.48"></rect><path fill="#fff" d="M19.88 10.5l-.05.29c-.66 3.37-2.9 4.53-5.77 4.53H12.6a.71.71 0 0 0-.7.6l-.75 4.74-.21 1.34a.37.37 0 0 0 .37.43h2.59a.62.62 0 0 0 .62-.52v-.13l.48-3.09v-.17a.62.62 0 0 1 .62-.53h.39c2.51 0 4.47-1 5-4a3.38 3.38 0 0 0-.52-3 2.47 2.47 0 0 0-.61-.49z" data-name="<Path>" opacity=".3"></path><path fill="#fff" d="M19.19 10.23l-.31-.08-.33-.06a8.1 8.1 0 0 0-1.28-.09h-3.9a.62.62 0 0 0-.61.53l-.83 5.25v.15a.71.71 0 0 1 .7-.6h1.46c2.87 0 5.11-1.16 5.77-4.53 0-.1 0-.2.05-.29a3.49 3.49 0 0 0-.54-.23z" data-name="<Path>" opacity=".5"></path><path fill="#fff" d="M12.75 10.52a.62.62 0 0 1 .61-.53h3.9a8.1 8.1 0 0 1 1.29.09l.33.06.31.08h.15a3.54 3.54 0 0 1 .54.23 3.18 3.18 0 0 0-.67-2.86c-.74-.84-2.08-1.21-3.79-1.21h-5a.71.71 0 0 0-.7.6L7.66 20.17a.43.43 0 0 0 .42.49h3.07l.77-4.89z" data-name="<Path>"></path></g></g></svg>
+                                <span class="flex-1 ml-3 whitespace-nowrap">Pay With Paypal</span>
+                        </a></div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,14 @@
+.card {
+    --tw-shadow: 0 3px 10px 0 rgb(48 46 56/6%);
+    --tw-shadow-colored: 0 3px 10px 0 var(--tw-shadow-color);
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    min-width: 1px;
+    overflow-wrap: break-word;
+    position: relative;
+}
+

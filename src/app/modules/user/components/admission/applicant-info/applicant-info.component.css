@@ -1,0 +1,9 @@
+
+  .text-primary-marine-blue {
+    --tw-text-opacity: 1;
+    color: rgb(2 41 90/var(--tw-text-opacity));
+}
+::placeholder {
+  /* Set your desired opacity value here (0.0 - 1.0) */
+  opacity: 0.7; /* Example: 50% opacity */
+}

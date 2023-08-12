@@ -1,0 +1,5 @@
+.active-link {
+    background-color: #f0f4ff; /* Set your desired active link background color (blue-100) */
+    border-color: #667eea; /* Set your desired active link border color (primary-light-blue) */
+    color: #4c51bf; /* Set your desired active link text color (indigo-900) */
+  }

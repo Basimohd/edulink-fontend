@@ -1,0 +1,74 @@
+<aside>
+    <nav>
+      <ol class="flex justify-center pt-8 gap-4 lg:flex-col lg:w-68 lg:mx-autor">
+        <h3 class="text-lg text-white text-center uppercase font-medium mb-3">Admission Enquiry</h3>
+        <li class="flex gap-4 lg:ml-8 items-center">
+            <a routerLink="/admission/applicant-info"
+            routerLinkActive="active-link" 
+            class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            1
+         </a>
+          <span class="hidden lg:inline text-white uppercase">
+            <p class="font-normal">Step 1</p>
+            <span class="font-bold text-sm">Applicant Info</span>
+          </span>
+        </li>
+        <li class="flex gap-4 lg:ml-8 items-center">
+          <button *ngIf="applicantFormValid$ | async" routerLink="/admission/course-details" routerLinkActive="active-link" 
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            2
+          </button>
+          <button *ngIf="!(applicantFormValid$ | async)" disabled="true"
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            2
+          </button>
+          <span class="hidden lg:inline text-white uppercase">
+            <p class="font-normal">Step 2</p>
+            <span class="font-bold text-sm">Course Details</span>
+          </span>
+        </li>
+        <li class="flex gap-4 lg:ml-8 items-center">
+          <button *ngIf="courseFormValid$ | async" routerLink="/admission/guardian-details" routerLinkActive="active-link" 
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            3
+          </button>
+          <button  *ngIf="!(courseFormValid$ | async)" disabled="true"
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            3
+          </button>
+          <span class="hidden lg:inline text-white uppercase">
+            <p class="font-normal">Step 3</p>
+            <span class="font-bold text-sm">Guardian Details</span>
+          </span>
+        </li>
+        <li class="flex gap-4 lg:ml-8 items-center">
+          <button *ngIf="guardianFormValid$ | async" routerLink="/admission/previous-education" routerLinkActive="active-link" 
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            4
+          </button>
+          <button *ngIf="!(guardianFormValid$ | async)" disabled="true"
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            4
+          </button>
+          <span class="hidden lg:inline text-white uppercase">
+            <p class="font-normal">Step 4</p>
+            <span class="font-bold text-sm">Previous Education</span>
+          </span>
+        </li>
+        <li class="flex gap-4 lg:ml-8 items-center">
+          <button *ngIf="previousEducationValid$ | async" routerLink="/admission/confirmation" routerLinkActive="active-link" 
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            5
+          </button>
+          <button *ngIf="!(previousEducationValid$ | async)" disabled="true"
+             class="px-3 py-2 border border-white inline-flex rounded-full leading-none font-medium w-min h-min transition-colors duration-[400ms] text-white">
+            5
+          </button>
+          <span class="hidden lg:inline text-white uppercase">
+            <p class="font-normal">Step 5</p>
+            <span class="font-bold text-sm">CONFIRMATION</span>
+          </span>
+        </li>
+      </ol>
+    </nav>
+  </aside>

@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0
+}
+
+.custom .mat-dialog-container {
+    border-radius: 110px !important;
+ }
+
+ [hidden] {
+    display: none !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: white;
+    color: yellow;
+}
+.fc .fc-daygrid-day.fc-day-today a {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 25px;
+    background-color: #ffffffb5;
+    color: black;
+    border-color: black;
+    border: .2px solid black;
+}
+
+
+.fc .fc-button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem; /* Rounded corners */
+    font-weight: 500;
+    color: white;
+    background-color: #4F46E5; /* Use your primary color variable */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.fc .fc-button-primary:hover, .fc .fc-button-primary:focus, .fc .fc-button-primary:active {
+    background-color: #3b33cd;
+    border: none;
+  }
+  
+  .fc .fc-button-primary:disabled:hover {
+    background-color: #2c3e50;
+}
+
+.fc .fc-bg-event {
+    opacity: .7;
+}
+
+.fc .fc-daygrid-day-number {
+    padding: 4px;
+    position: relative;
+    z-index: 4;
+    font-size: 19px;
+}
+.fc .fc-daygrid-day-frame {
+    min-height: 100%;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: black;
+}

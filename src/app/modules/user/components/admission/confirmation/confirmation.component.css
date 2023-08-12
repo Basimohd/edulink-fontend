@@ -1,0 +1,4 @@
+.invalid-checkbox {
+    border-color: red;
+    /* Add any other styles you want to apply to the checkbox when it's invalid */
+  }

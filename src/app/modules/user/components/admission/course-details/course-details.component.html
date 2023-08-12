@@ -1,0 +1,48 @@
+<app-card (nextStepClicked)="goToNextStep()" (previousStepClicked)="goToBackStep()">
+    <form [formGroup]="courseForm"   class="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full grow [&amp;_h2]:text-2xl [&amp;_h2]:font-bold [&amp;_h2]:text-primary-marine-blue [&amp;_h3]:font-medium [&amp;_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
+        <section class="flex flex-col gap-4 w-full">
+            <h2 class="text-2xl font-bold text-indigo-900">Course Details</h2>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="department" class="text-sm text-primary-marine-blue ">Department</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.department.hasError('required')">This field is required</p>
+                </span>
+                
+                <select id="department"   formControlName="department" [class.border-red-500]="f.department.hasError('required') && submitted"
+                class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue">
+                <option disabled hidden [value]="null">Choose a Department</option>
+                <ng-container *ngFor="let department of departments" >
+                    <option [value]="department._id">{{department.departmentName}}</option>
+                  </ng-container>
+                    </select>
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="quota" class="text-sm text-primary-marine-blue ">Quota</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.quota.hasError('required')">This field is required</p>
+                </span>
+                
+                <select id="quota"   formControlName="quota" [class.border-red-500]="f.quota.hasError('required') && submitted"
+                class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue">
+                <option disabled hidden [value]="null">Choose Quota</option>
+                <option value="MERIT">Merit</option>
+                <option value="MANAGEMENT">Management</option>
+                <option value="SPORTS">Sports</option>
+                    </select>
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="admissionType" class="text-sm text-primary-marine-blue ">Admission Type</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.admissionType.hasError('required')">This field is required</p>
+                </span>
+                
+                <select id="admissionType"   formControlName="admissionType" [class.border-red-500]="f.admissionType.hasError('required') && submitted"
+                class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue">
+                <option disabled hidden [value]="null">Choose Admission Type</option>
+                <option value="REGULAR">Regular</option>
+                <option value="LATERAL">Lateral</option>
+                    </select>
+            </div>
+        </section>
+    </form>
+    </app-card> 

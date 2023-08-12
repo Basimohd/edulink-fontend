@@ -1,0 +1,88 @@
+<app-layout>
+  <main class="main-content w-full px-20 pl-32 pt-20 pb-8">
+    <div class="grid grid-cols-1 gap-4 sm:gap-5 lg:gap-6">
+
+      <h2 class="text-xl font-medium text-gray-800 dark:text-navy-50 lg:text-2xl">
+        Attendance
+      </h2>
+      <div class="card px-4 pb-4 sm:px-5 bg-white rounded-lg">
+        <div class="my-3 flex h-8 items-center justify-between">
+          <div class="w-full flex mt-8 mb-6 justify-between items-center">
+            <div class="mt-4">
+              <h2 class="font-medium text-lg tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
+                Date: {{ selectedDate | date }}
+              </h2>
+            </div>
+            <div class="mt-2">
+             
+              <input (change)="onDateChange($event)" class="form-input peer w-92 rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-indigo-600 dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                type="date" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="mt-5">
+            <div class="is-scrollbar-hidden min-w-full overflow-x-auto rounded-lg border border-slate-200 dark:border-navy-500">
+              <table class="w-full text-left">
+                <thead>
+                  <tr>
+                    <th class="whitespace-nowrap border border-t-0 border-l-0 border-slate-200 px-3 py-3 font-semibold uppercase text-slate-800 dark:border-navy-500 dark:text-navy-100">
+                      Reg No.
+                    </th>
+                    <th class="whitespace-nowrap border border-t-0 border-slate-200 px-3 py-3 font-semibold uppercase text-slate-800 dark:border-navy-500 dark:text-navy-100 lg:px-5">
+                      Name
+                    </th>
+                    <th class="whitespace-nowrap border border-t-0 border-slate-200 px-3 py-3 font-semibold uppercase text-slate-800 dark:border-navy-500 dark:text-navy-100 lg:px-5">
+                      Status
+                    </th>
+                    <th class="whitespace-nowrap border border-t-0 border-slate-200 px-3 py-3 font-semibold uppercase text-slate-800 dark:border-navy-500 dark:text-navy-100 lg:px-5">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let student of students; let i = index;">
+                    <td class="whitespace-nowrap text-gray-900 border border-l-0 border-slate-200 px-3 py-3 dark:border-navy-500 w-2 lg:px-5">
+                      {{ i + 1 }}
+                    </td>
+                    <td class="whitespace-nowrap text-gray-900 border border-slate-200 px-3 py-3 dark:border-navy-500 lg:px-5 lg:pr-28">
+                      {{ student.admssionDetails.firstName + " " + student.admssionDetails.lastName }}
+                    </td>
+                    <td class="whitespace-nowrap border border-slate-200 px-3 py-3 dark:border-navy-500 lg:px-5 text-gray-900">
+                      <form action="">
+                        <label class="inline-flex items-center space-x-3 justify-center pr-24"
+                          *ngFor="let status of attendanceStatuses">
+                          <input type="radio" [name]="'attendance-' + student._id" [value]="status.value"
+                            [(ngModel)]="student.attendance.status" (change)="onAttendanceChange(student)"
+                            [ngClass]="[status.value, 'radio', 'focus:ring-0']"
+                            [ngStyle]="{
+                            borderColor: student.attendance.status === status.value ? status.borderColor : '',
+                            backgroundColor: student.attendance.status === status.value ? status.backgroundColor : ''
+                          }" [checked]="student.attendance.status === status.value" />
+                          {{ status.label }}
+                        </label>
+                      </form>
+                    </td>
+                    <td class="whitespace-nowrap border border-slate-200 px-3 py-3 dark:border-navy-500 lg:px-5 text-gray-900">
+                      <button (click)="onClick(student)" type="button"
+                        class="px-3 py-2 btn min-w-[7rem] rounded-full bg-indigo-600 font-medium text-white hover:bg-indigo-600-focus focus:bg-indigo-600-focus active:bg-indigo-600-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+                        Leave Requests
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="code-wrapper pt-4 hidden">
+          <pre class="is-scrollbar-hidden max-h-96 overflow-auto rounded-lg hljs language-xml"
+            x-init="hljs.highlightElement($el)">
+            <!-- Your code here -->
+          </pre>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</app-layout>

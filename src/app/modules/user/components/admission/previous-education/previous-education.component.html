@@ -1,0 +1,29 @@
+<app-card (nextStepClicked)="goToNextStep()" (previousStepClicked)="goToBackStep()">
+    <form [formGroup]="previouseducationForm"   class="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full grow [&amp;_h2]:text-2xl [&amp;_h2]:font-bold [&amp;_h2]:text-primary-marine-blue [&amp;_h3]:font-medium [&amp;_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
+        <section class="flex flex-col gap-4 w-full">
+            <h2 class="text-2xl font-bold text-indigo-900">Previous Education</h2>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="previousInstitute" class="text-sm text-primary-marine-blue ">Previous Institute</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.previousInstitute.hasError('required')">This field is required</p>
+                </span>
+                <input type="text" id="previousInstitute" formControlName="previousInstitute"  [class.border-red-500]="f.previousInstitute.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Previous Institute">
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="courseStudied" class="text-sm text-primary-marine-blue ">Course Studied</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.courseStudied.hasError('required')">This field is required</p>
+                </span>
+                <input type="text" id="courseStudied" formControlName="courseStudied"  [class.border-red-500]="f.courseStudied.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Course Studied">
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="passingYear" class="text-sm text-primary-marine-blue ">Passing Year</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.passingYear.hasError('required')">This field is required</p>
+                </span>
+                <input type="text" id="passingYear" formControlName="passingYear"  [class.border-red-500]="f.passingYear.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="eg : July 2023">
+            </div>
+     
+        </section>
+    </form>
+    </app-card> 

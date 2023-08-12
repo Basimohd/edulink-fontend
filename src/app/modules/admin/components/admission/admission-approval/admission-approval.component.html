@@ -1,0 +1,65 @@
+<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+  <div class="mt-4">
+    <div class="p-4 sm:p-10 text-center overflow-y-auto">
+      <span
+        class="mb-2 inline-flex justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-yellow-50 bg-yellow-100 text-yellow-500">
+        <div class="success-checkmark">
+          <div class="check-icon">
+            <span class="icon-line line-tip"></span>
+            <span class="icon-line line-long"></span>
+            <div class="icon-circle"></div>
+            <div class="icon-fix"></div>
+          </div>
+        </div>
+      </span>
+
+      <h3 class="mb-2 text-2xl font-bold text-gray-800">
+        Approve the Admission?
+      </h3>
+      <small>Admission Seeking For <span class="font-medium">{{this.data.department.departmentName}}</span></small>
+      <p>Select the Department and Batch</p>
+      <form [formGroup]="approvalForm">
+        <div class="flex gap-4 pt-4">
+          <div class="w-1/2 h-1/2">
+            <mat-form-field>
+              <mat-label>Department</mat-label>
+              <mat-select  (selectionChange)="departmentChange($event)" [(value)]="this.data.department._id" [placeholder]="this.data.department.departmentName">
+                <mat-option *ngFor="let department of departments" [value]="department._id">
+                  {{department.departmentName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-1/2 h-1/2">
+            <mat-form-field>
+              <mat-label>Batch</mat-label>
+              <mat-select formControlName="batch">
+                <mat-option *ngFor="let batch of batches" [value]="batch._id">
+                  {{batch.batch.startYear}} - {{batch.batch.endYear}}
+                </mat-option>
+                <!-- Show this option if there are no batches available -->
+                <mat-option disabled *ngIf="batches.length === 0" [value]="'no-batch'">
+                  No batches available
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="mt-2 flex justify-center gap-x-4">
+          <button [disabled]="!approvalForm.valid" [mat-dialog-close]="approvalForm" type="submit"
+            class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm">
+            Approve
+          </button>
+          <button (click)="onNoClick()" type="button"
+            class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

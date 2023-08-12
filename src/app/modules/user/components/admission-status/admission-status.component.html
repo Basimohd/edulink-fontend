@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+<section class="admission-section bg-gray-50 dark:bg-gray-900 pt-14">
+    <div class="flex flex-col justify-center items-center h-[90vh]">
+        <h1 class="font-bold text-3xl mb-12">Admission Status</h1>
+        <div class="relative flex flex-col items-center rounded-[20px]  mx-auto p-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:text-white dark:!shadow-none">
+            <div class="relative flex w-full justify-center rounded-xl bg-cover">
+                <div class="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                    <img class="h-full w-full rounded-full" [src]="'http://localhost:3000/uploads/' + user.profilePicture" alt="" />
+                </div>
+            </div> 
+            <div class="mt-16 flex flex-col items-center">
+                <h4 class="text-xl font-bold text-navy-700 dark:text-white">
+                    {{user.firstName + " " + user.lastName}}
+                </h4>
+                <p class="text-xs font-normal text-gray-600">{{user.studentEmail}}</p>
+            </div> 
+            <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
+                <table class="items-center w-full border-collapse text-blueGray-700">
+                    <tbody>
+                        <tr>
+                            <th class="border-t-0  align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3 text-left">
+                                Admission Number
+                            </th>
+                            <td class="border-t-0 pl-8 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3">
+                                {{user.admissionId}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="border-t-0  align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3 text-left">
+                                Admission Applied On
+                            </th>
+                            <td class="border-t-0 pl-8 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3">
+                                {{user.admissionDate | date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="border-t-0  align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3 text-left">
+                                Course Department
+                            </th>
+                            <td class="border-t-0 pl-8 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3">
+                                {{user.department.departmentName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="border-t-0  align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3 text-left">
+                                Admission Status
+                            </th>
+                            <td class="border-t-0 pl-8 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-3">
+                                <a *ngIf="user.admissionStatus === AdmissionStatus.PENDING" class="text-xs font-semibold leading-tight text-slate-400 pr-2">
+                                    <span class="bg-gradient-to-tl from-amber-500 to-yellow-300 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">PENDING</span>
+                                </a>
+                                <a *ngIf="user.admissionStatus === AdmissionStatus.APPROVED" class="text-xs font-semibold leading-tight text-slate-400 pr-2">
+                                    <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">APPROVED</span>
+                                </a>
+                                <a *ngIf="user.admissionStatus === AdmissionStatus.REJECTED" class="text-xs font-semibold leading-tight text-slate-400 pr-2">
+                                    <span class="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">REJECTED</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

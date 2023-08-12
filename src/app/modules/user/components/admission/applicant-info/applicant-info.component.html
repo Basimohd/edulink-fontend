@@ -1,0 +1,68 @@
+    <app-card (nextStepClicked)="goToNextStep()">
+        <form [formGroup]="applicantForm"   class="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full grow [&amp;_h2]:text-2xl [&amp;_h2]:font-bold [&amp;_h2]:text-primary-marine-blue [&amp;_h3]:font-medium [&amp;_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
+            <section class="flex flex-col gap-4 w-full">
+                <h2 class="text-2xl font-bold text-indigo-900">Applicant info</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col font-medium">
+                        <span class="inline-flex justify-between">
+                            <label for="firstName" class="text-sm text-primary-marine-blue ">First Name<span class="text-red-500 ml-1">*</span></label>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.firstName.hasError('required')">This field is required</p>
+                        </span>
+                        <input type="text" id="firstName" formControlName="firstName"  [class.border-red-500]="f.firstName.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="First Name">
+                    </div>
+                    <div class="flex flex-col font-medium">
+                        <span class="inline-flex justify-between">
+                            <label for="lastName" class="text-sm text-primary-marine-blue ">Last Name<span class="text-red-500 ml-1">*</span></label>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.lastName.hasError('required')">This field is required</p>
+                        </span>
+                        <input type="text" id="lastName" formControlName="lastName" [class.border-red-500]="f.lastName.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Last Name">
+                    </div>
+                    <div class="flex flex-col font-medium">
+                        <span class="inline-flex justify-between">
+                            <label for="studentEmail" class="text-sm text-primary-marine-blue ">Email Address<span class="text-red-500 ml-1">*</span></label>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.studentEmail.hasError('required')">This field is required</p>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="applicantForm.get('studentEmail')?.errors?.['email']">Invalid email format</p>
+                        </span>
+                        <input type="email" id="studentEmail" formControlName="studentEmail" [class.border-red-500]="f.studentEmail.hasError('required') && submitted || applicantForm.get('studentEmail')?.errors?.['email']"  class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Email Address">
+                    </div>
+                    <div class="flex flex-col font-medium">
+                        <span class="inline-flex justify-between">
+                            <label for="dob" class="text-sm text-primary-marine-blue ">Date Of Birth<span class="text-red-500 ml-1">*</span></label>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.dob.hasError('required')">This field is required</p>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="applicantForm.get('dob')?.errors?.['invalidAge']">Age must be greater than 15</p>
+                        </span>
+                        <input type="date" id="dob" formControlName="dob" [class.border-red-500]="f.dob.hasError('required') && submitted || applicantForm.get('dob')?.errors?.['invalidAge']" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" >
+                    </div>
+                    <div class="flex flex-col font-medium">
+                        <span class="inline-flex justify-between">
+                            <label for="gender" class="text-sm text-primary-marine-blue ">Gender<span class="text-red-500 ml-1">*</span></label>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.gender.hasError('required')">This field is required</p>
+                        </span>
+                        
+                        <select id="gender"   formControlName="gender" [class.border-red-500]="f.gender.hasError('required') && submitted"
+                        class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue">
+                        <option disabled hidden [value]="null">Choose a Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                    </div>
+                    <div class="flex flex-col font-medium">
+                        <span class="inline-flex justify-between">
+                            <label for="studentPhone" class="text-sm text-primary-marine-blue ">Contact No<span class="text-red-500 ml-1">*</span></label>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.studentPhone.hasError('required')">This field is required</p>
+                            <p class="text-red-600 mt-1 text-xs"  *ngIf="applicantForm.get('studentPhone')?.errors?.['pattern']">Invalid phone number</p>
+                        </span>
+                        <input type="tel" id="studentPhone"   formControlName="studentPhone" [class.border-red-500]="f.studentPhone.hasError('required') && submitted || applicantForm.get('studentPhone')?.errors?.['pattern']" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Phone Number" >
+                    </div>
+                </div>
+                <div class="flex flex-col font-medium">
+                    <span class="inline-flex justify-between">
+                        <label for="address" class="text-sm text-primary-marine-blue ">Residential Address<span class="text-red-500 ml-1">*</span></label>
+                        <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.address.hasError('required')">This field is required</p>
+                    </span>
+                    
+                    <textarea type="date" id="address" formControlName="address" [class.border-red-500]="f.address.hasError('required') && submitted " class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="e.g. +1 234 567 890" value="09497182689"></textarea>
+                </div>
+            </section>
+        </form>
+        </app-card> 

@@ -1,0 +1,36 @@
+<app-card (nextStepClicked)="goToNextStep()" (previousStepClicked)="goToBackStep()">
+    <form [formGroup]="guardianForm"   class="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full grow [&amp;_h2]:text-2xl [&amp;_h2]:font-bold [&amp;_h2]:text-primary-marine-blue [&amp;_h3]:font-medium [&amp;_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
+        <section class="flex flex-col gap-4 w-full">
+            <h2 class="text-2xl font-bold text-indigo-900">Guardian Details</h2>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="guardianName" class="text-sm text-primary-marine-blue ">Guardian Name</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.guardianName.hasError('required')">This field is required</p>
+                </span>
+                <input type="text" id="guardianName" formControlName="guardianName"  [class.border-red-500]="f.guardianName.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Guardian Name">
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="relation" class="text-sm text-primary-marine-blue ">Relation</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.relation.hasError('required')">This field is required</p>
+                </span>
+                <input type="text" id="relation" formControlName="relation"  [class.border-red-500]="f.relation.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Relation">
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="occupation" class="text-sm text-primary-marine-blue ">Occupation</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.occupation.hasError('required')">This field is required</p>
+                </span>
+                <input type="text" id="occupation" formControlName="occupation"  [class.border-red-500]="f.occupation.hasError('required') && submitted" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Occupation">
+            </div>
+            <div class="flex flex-col font-medium">
+                <span class="inline-flex justify-between">
+                    <label for="guardianPhone" class="text-sm text-primary-marine-blue ">Contact No</label>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="submitted && f.guardianPhone.hasError('required')">This field is required</p>
+                    <p class="text-red-600 mt-1 text-xs"  *ngIf="guardianForm.get('guardianPhone')?.errors?.['pattern']">Invalid phone number</p>
+                </span>
+                <input type="tel" id="guardianPhone"   formControlName="guardianPhone" [class.border-red-500]="f.guardianPhone.hasError('required') && submitted || guardianForm.get('guardianPhone')?.errors?.['pattern']" class="border border-gray-300 rounded px-4 py-2 text-sm transition-all focus:outline-none focus:ring-1 focus:ring-primary-purplish-blue" placeholder="Phone Number" >
+            </div>
+        </section>
+    </form>
+    </app-card> 

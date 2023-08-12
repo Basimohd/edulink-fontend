@@ -1,0 +1,25 @@
+/* attendance-styles.css */
+.radio {
+    margin-right: 0.75rem; /* Margin between radio buttons */
+    width: 1.25rem; /* Width of radio buttons */
+    height: 1.25rem; /* Height of radio buttons */
+    border-radius: 50%; /* Rounded shape */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .present:checked + .radio {
+    border-color: #34D399; /* Green border color for 'Present' */
+    background-color: #10B981; /* Green background color for 'Present' */
+  }
+  
+  .halfday:checked + .radio {
+    border-color: #F59E0B; /* Orange border color for 'Half Day' */
+    background-color: #FCD34D; /* Orange background color for 'Half Day' */
+  }
+  
+  .absent:checked + .radio {
+    border-color: #EF4444; /* Red border color for 'Absent' */
+    background-color: #F87171; /* Red background color for 'Absent' */
+  }
+  
