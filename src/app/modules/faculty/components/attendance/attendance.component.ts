@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { studentService } from '../../services/student.service';
 import { attendanceStatus } from 'src/app/common/enums/attendance-status.enum';
 import { attendanceService } from '../../services/attendance.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LeaveApplicationsComponent } from './leave-applications/leave-applications.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-attendance',
@@ -20,9 +23,14 @@ export class AttendanceComponent {
   ];
   NoStudent!:boolean;
   NoBatch!:boolean;
-  students:any[] = []
+  students!: MatTableDataSource<any>;
+  displayedColumns: string[] = ['number', 'name', 'status', 'action'];
+  @ViewChild(MatPaginator) paginatior !: MatPaginator;
+  faeye = faEye;
   batch!:any;
-  selectedDate:Date = new Date();
+  selectedDate: Date = new Date();
+  todaysDate!:string
+  
   
   constructor(
     private _studentService: studentService,
@@ -32,8 +40,16 @@ export class AttendanceComponent {
   ){}
 
   ngOnInit(){
-    
+    const today = new Date();
+    this.todaysDate = this.formatDate(today);
     this.loadStudent()
+  }
+
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   loadStudent(){
@@ -42,9 +58,9 @@ export class AttendanceComponent {
       if(res){
         console.log(res);
         
-        this.students = res.students
+        let students = res.students
         this.batch = res.batch
-        this.students.forEach((student)=>{
+        students.forEach((student:any)=>{
           const attendanceRecord = student.attendance;
           console.log(attendanceRecord);
           attendanceRecord.forEach((attendance:any)=>{
@@ -54,7 +70,9 @@ export class AttendanceComponent {
             }
           })
         })
-        console.log(this.students);
+      this.students = new MatTableDataSource<any>(students);
+      this.students.paginator = this.paginatior;
+      
       }
     },(err)=>{
       console.log(err)

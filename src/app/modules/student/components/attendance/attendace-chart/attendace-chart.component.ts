@@ -44,7 +44,7 @@ export class AttendaceChartComponent {
   loadAttendance(){
     let userId = localStorage.getItem('userId');
     this._studentService.getUserDetails(userId).subscribe((res:any)=>{
-       this.attendancePerc = this.calculateAcademicYearPresentPercentage(res.attendance);
+       this.attendancePerc = Number(this.calculateAcademicYearPresentPercentage(res.attendance).toFixed(0))
        this.chartOptions = {
         series: [this.attendancePerc],
         chart: {

@@ -1,11 +1,11 @@
-<div class="grid md:grid-cols-8 gap-3  px-4 ">
+<div class="grid md:grid-cols-8 gap-3  px-4 md:-mb-36">
     <div class="col-span-6">
         <full-calendar class="sm:pl-28 sm:pr-8 sm:pt-20 md:mb-24 pt-5 md:h-4/5" [options]="calendarOptions">
    
         </full-calendar>
     </div>
-    <div class=" md:col-span-2 sm:pr-8 sm:pt-20 sm:mb-24   md:flex-col  col-span-4 sm:pl-24 md:pl-1">
-      <button (click)="onApply()" class="btn space-x-2 w-full mb-2 bg-indigo-600 px-5 py-2 rounded-lg font-medium text-white hover:bg-indigo-600-focus focus:bg-indigo-600-focus active:bg-indigo-600-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+    <div class=" md:col-span-2 sm:pr-8 sm:pt-20 md:mb-24   md:flex-col  col-span-4 sm:pl-24 md:pl-1">
+      <button (click)="onApply()" class="btn space-x-2 w-full mb-2 bg-indigo-600 px-5 py-2 rounded-lg font-medium text-white hover:bg-indigo-600-focus focus:bg-indigo-600-focus active:bg-indigo-600-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90 text-4">
         Apply For Leave
       </button>
       <button (click)="onManage ()" class="btn space-x-2 w-full mb-8 bg-indigo-600 px-5 py-2 rounded-lg font-medium text-white hover:bg-indigo-600-focus focus:bg-indigo-600-focus active:bg-indigo-600-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
@@ -16,20 +16,20 @@
           
             <div class="flex items-center sm:mb-4 mr-2">
               <div class="h-6 w-6 bg-green-500 rounded-full mr-2"></div>
-              <div class="text-green-500 text-md">Present</div>
+              <div class="text-green-500 text-sm">Present</div>
           </div>
           <div class="flex items-center sm:mb-4 mr-2">
               <div class="h-6 w-6 bg-orange-400 rounded-full mr-2"></div>
-              <div class="text-orange-400 text-md">Half Day</div>
+              <div class="text-orange-400 text-sm">Half Day</div>
           </div>
           
             <div class="flex items-center mr-2  sm:mb-4  mb-2">
               <div class="h-6 w-6 bg-red-500 rounded-full mr-2"></div>
-              <div class="text-red-500 text-md">Absent    </div>
+              <div class="text-red-500 text-sm">Absent    </div>
           </div>
           <div class="flex items-center mr-2   sm:mb-4 mb-2">
               <div class="h-6 w-6 border-black border rounded-full mr-2"></div>
-              <div class="text-black text-md">Today's Date    </div>
+              <div class="text-black text-sm">Today's Date    </div>
           </div>
           </div>
         <div class="mt-9 card pb-5 bg-white">
@@ -47,6 +47,6 @@
               <div id="working-hr-chart"><app-attendance-chart></app-attendance-chart></div>
             </div>
             <div class="px-4 text-center text-xs+ sm:px-5">
-              <p>Attendance calculated based <br> on Academic Year (<span class="font-medium">{{startYear}} - {{endYear}}</span>)</p>
+              <p class="text-sm">Attendance calculated based <br> on Academic Year (<span class="font-medium">{{startYear}} - {{endYear}}</span>)</p>
             </div>
           </div>

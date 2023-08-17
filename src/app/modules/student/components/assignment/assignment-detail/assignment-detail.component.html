@@ -1,0 +1,80 @@
+<main>
+  <div class="px-4 pt-2">
+    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4 mb-6">
+      <div class="flex justify-between">
+        <h3 class="mb-2 text-xl font-bold">{{ assignmentDetails.title }}</h3>
+        <div>
+          <dt class="flex flex-row gap-1 text-sm font-medium text-gray-500">
+            <div
+              *ngIf="assignmentDetails.status == 'open'"
+              class="badge rounded-full font-bold border border-green-500 text-green-500"
+            >
+              OPEN
+            </div>
+            <div
+              *ngIf="assignmentDetails.status == 'closed'"
+              class="badge rounded-full font-bold border border-red-500 text-red-500"
+            >
+              CLOSED
+            </div>
+            <div
+              *ngIf="submissions.isGraded"
+              class="badge rounded-full font-bold border border-blue-500 text-blue-500"
+            >
+              GRADED
+            </div>
+          </dt>
+        </div>
+      </div>
+      <dl class="">
+        <div class="mb-4">
+          <dt class="text-sm font-medium text-gray-500"></dt>
+          <dd class="text-sm font-normal text-gray-700 max-w-120 break-words">
+            {{ assignmentDetails.description }}
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-medium text-gray-500">
+            Due Date :
+            <div class="badge rounded-full border bg-gray-200 text-gray-800">
+              {{ assignmentDetails.dueDate | date }}
+            </div>
+          </dt>
+        </div>
+        <div class="mt-4" *ngIf="!submissions.isGraded">
+          <label class="font-medium text-sm" for=""
+            >Submit Assignment Files
+          </label>
+
+          <app-file-upload
+            [options]="pondOptions"
+            [pondFiles]="pondFiles"
+          ></app-file-upload>
+
+          <div>
+            <p class="text-xs -mt-2">
+              Please select up to {{ pondOptions.maxFiles }} PDF files, each
+              with a maximum size of {{ pondOptions.maxFileSize }}.
+            </p>
+          </div>
+
+        </div>
+        <div class="mt-4" *ngIf="submissions.isGraded">
+          <label class="font-medium text-sm" for="">Submitted Assignment Files</label>
+          <div class="space-y-2 mt-2 mb-2 flex flex-col">
+            <ng-container *ngFor="let fileName of fileNames; let i = index">
+              <a
+                [href]="fileUrls[i]"
+                target="_blank"
+                class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300"
+              >
+                {{ fileName }}
+              </a>
+            </ng-container>
+          </div>
+          <p class="font-medium text-md  text-gray-800">GRADE : <span class="font-semibold text-black">{{ submissions?.grade }} </span>/ 10</p>
+        </div>
+      </dl>
+    </div>
+  </div>
+</main>

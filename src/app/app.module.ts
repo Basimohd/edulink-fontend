@@ -36,6 +36,12 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { FullCalendarModule } from '@fullcalendar/angular'
 
 import { NgApexchartsModule } from 'ng-apexcharts';
+
+import { FilePondModule, registerPlugin } from "ngx-filepond";
+
+import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireStorageModule} from '@angular/fire/compat/storage'
+import { environment } from 'src/environments/environment';
 @NgModule({
   
   declarations: [
@@ -72,6 +78,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     NgxStripeModule.forRoot('pk_test_51NZz4dSBX5PVkKd6v6YWKJB84R2GTAjasR9N0q51mvtzilANgHlwI9ai9G0Q5JuUb2cC3vvS9l2tsRWKJUj5ecQz00UnHVSInS'),
+    FilePondModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass: LoadingInterceptor, multi: true}, 

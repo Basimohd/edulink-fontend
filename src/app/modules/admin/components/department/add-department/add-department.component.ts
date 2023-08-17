@@ -6,6 +6,8 @@ import { faTrash,faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { feesValidator } from '../../../../../common/validators/fee.validator';
 import { professorsValidator } from '../../../../../common/validators/professors.validator';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-add-department',
   templateUrl: './add-department.component.html',
@@ -29,6 +31,7 @@ export class AddDepartmentComponent {
     private departmentService: DepartmentService,
     public dialogRef: MatDialogRef<AddDepartmentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -47,10 +50,7 @@ export class AddDepartmentComponent {
       })
     })
 
-    this.departmentForm.get('step1.duration')?.valueChanges.subscribe((value) => {
-      this.selectedDuration = value;
-      this.updateFeesArray();
-    });
+
 
     this.getFaculties()
   }
@@ -137,12 +137,16 @@ export class AddDepartmentComponent {
       if (!stepOneValid) { return }
       this.step++
     } else if (this.step == 2) {
+      this.selectedDuration = this.departmentForm.get('step1.duration')?.value
+      this.updateFeesArray();
       console.log(this.departmentForm.value)
       this.stepTwo = true;
       const stepTwoValid = this.departmentForm.get('step2')?.valid;
       if (!stepTwoValid) { return }
       this.step++;
     }
+    this.selectedDuration = this.departmentForm.get('step1.duration')?.value
+    this.updateFeesArray();
   }
 
   previous() {
@@ -174,7 +178,34 @@ export class AddDepartmentComponent {
         this.departmentService.createDepartment(departmentDetails).subscribe((res)=>{
           if(res){
             this.dialogRef.close()
+            this._snackBar.open("Department Added!", 'Close', {
+              duration: 2000,
+            });
           }
+        },(err)=>{
+          this.isLoading = false
+          let errMsg!: string;
+          if (err.status === 409) {
+            errMsg = err.error.error;
+          } else {
+            errMsg = 'An error occurred. Please try again later'
+          }
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+  
+          Toast.fire({
+            icon: 'error',
+            title: errMsg
+          })
         })
       }
     }

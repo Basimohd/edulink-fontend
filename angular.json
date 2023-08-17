@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/filepond/dist/filepond.min.css",
               "node_modules/minireset.css/minireset.css",
               "./node_modules/ngx-loading-buttons/src/styles.css",
               "src/custom-theme.scss",

@@ -4,33 +4,33 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 import { authService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-set-password',
+  templateUrl: './set-password.component.html',
+  styleUrls: ['./set-password.component.css']
 })
-export class RegisterComponent {
-
+export class SetPasswordComponent {
   registerForm!: FormGroup;
   passErr:string =''
+  token:string | null= ""
   constructor(
     private _fb: FormBuilder,
     private _authService:authService,
-    private _router : Router
-  ) { }
+    private _router : Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.createFacultyForm();
+    this.route.paramMap.subscribe(params => {
+      this.token = params.get('token')
+    });
   }
 
   createFacultyForm() {
     this.registerForm = this._fb.group({
-      facultyID: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       password: ['',[ Validators.required,Validators.pattern(GlobalConstants.passPattern)]],
       confirmPassword: ['', [Validators.required,Validators.pattern(GlobalConstants.passPattern)]],
     });
@@ -45,8 +45,11 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       if (password == confirmPassword) {
         this.passErr = ""
-       
-        this._authService.registerFaculty(this.registerForm.value).subscribe((res) => {
+       const registerForm ={
+        ...this.registerForm.value,
+        token:this.token
+       }
+        this._authService.registerFaculty(registerForm).subscribe((res) => {
           console.log(res)
 
             const Toast = Swal.mixin({
@@ -68,13 +71,7 @@ export class RegisterComponent {
             this._router.navigate(['faculty/login'])
 
         }, (err: HttpErrorResponse) => {
-          let errMsg!: string;
-          if (err.status === 409) {
-            errMsg = err.error.error;
-          } else {
-            console.log(err.message)
-            errMsg = 'An error occurred. Please try again later'
-          }
+          let errMsg: string = 'Something went wrong!'
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',

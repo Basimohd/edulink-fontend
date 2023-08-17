@@ -18,7 +18,18 @@ import { PortalSidebarComponent } from './components/layouts/portal-sidebar/port
 import { MatIconModule } from '@angular/material/icon';
 import { LeaveApplicationComponent } from './components/attendance/leave-application/leave-application.component';
 import { LeaveApplicationsComponent } from './components/attendance/leave-applications/leave-applications.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AssignmentDetailComponent } from './components/assignment/assignment-detail/assignment-detail.component';
+import { FilePondModule, registerPlugin } from "ngx-filepond";
+import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import * as FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
+import { FileUploadComponent } from 'src/app/shared/file-upload/file-upload.component';
 
+registerPlugin(FilePondPluginFileValidateSize,FilePondPluginFileValidateType);
 
 @NgModule({
   declarations: [
@@ -34,6 +45,9 @@ import { LeaveApplicationsComponent } from './components/attendance/leave-applic
     PortalSidebarComponent,
     LeaveApplicationComponent,
     LeaveApplicationsComponent,
+    AssignmentComponent,
+    AssignmentDetailComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +57,10 @@ import { LeaveApplicationsComponent } from './components/attendance/leave-applic
     NgApexchartsModule,
     MatIconModule,
     FullCalendarModule,
+    FontAwesomeModule,
+    FilePondModule,
+    MatTableModule,
+    MatPaginatorModule,
   ]
 })
 export class StudentModule { }

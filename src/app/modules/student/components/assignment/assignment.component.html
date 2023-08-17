@@ -1,0 +1,81 @@
+<main class="main-content w-full sm:px-16 sm:pl-32 sm:pt-20 sm:pb-8 pt-7 px-6">
+  <div>
+    <div class="flex md:flex-row flex-col justify-between items-center space-x-4 py-1">
+      <h2 class="text-xl font-medium text-gray-800 dark:text-navy-50 lg:text-2xl">
+        Assignments
+      </h2>
+      <label class="block">
+        <input (keyup)="Filterchange($event)"
+          class="h-8 w-full rounded-full border placeholder:text-sm border-slate-300 bg-transparent px-4 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-indigo-600 dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+          placeholder="Search Assignment"
+          type="text"
+        />
+      </label>
+     </div>
+    <div class="card mt-3">
+      <div
+        class="is-scrollbar-hidden min-w-full overflow-x-auto"
+      >
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="assignments" class="is-hoverable w-full text-left">
+          
+          <!-- Number Column -->
+          <ng-container matColumnDef="number">
+            <th *matHeaderCellDef class="whitespace-nowrap text-sm rounded-tl-lg px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5 bg-slate-100"> # </th>
+            <td  *matCellDef="let assignment; let i = index" class="whitespace-nowrap text-sm px-4 py-3 sm:px-5"> {{ i + 1 }} </td>
+          </ng-container>
+      
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <th  *matHeaderCellDef class="whitespace-nowrap text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"> TITLE </th>
+            <td  *matCellDef="let assignment" class="whitespace-nowrap text-sm px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5"> {{ assignment.title }} </td>
+          </ng-container>
+      
+          <!-- Faculty Name Column -->
+          <ng-container matColumnDef="facultyName">
+            <th  *matHeaderCellDef class="whitespace-nowrap text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"> Faculty Name </th>
+            <td  *matCellDef="let assignment" class="whitespace-nowrap text-sm px-4 py-3 sm:px-5"> {{ assignment.facultyId.facultyName }} </td>
+          </ng-container>
+      
+          <!-- Due Date Column -->
+          <ng-container matColumnDef="dueDate">
+            <th  *matHeaderCellDef class="whitespace-nowrap text-center text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"> DUE DATE </th>
+            <td  *matCellDef="let assignment" class="whitespace-nowrap text-sm text-center px-4 py-3 sm:px-5"> {{ assignment.dueDate | date }} </td>
+          </ng-container>
+      
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th  *matHeaderCellDef class="whitespace-nowrap text-center text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"> STATUS </th>
+            <td  *matCellDef="let assignment" class="whitespace-nowrap text-sm px-4 py-3 sm:px-5 text-center">
+              <div *ngIf="assignment.status === 'open'" class="badge rounded-full font-bold border border-green-500 text-green-500"> OPEN </div>
+              <div *ngIf="assignment.status === 'closed'" class="badge rounded-full font-bold border border-red-500 text-red-500"> CLOSED </div>
+              <div *ngIf="assignment.status === 'graded'" class="badge rounded-full font-bold border border-blue-500 text-blue-500"> GRADED </div>
+            </td>
+          </ng-container>
+      
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th  *matHeaderCellDef class="text-center whitespace-nowrap text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"> ACTION </th>
+            <td  *matCellDef="let assignment" class="whitespace-nowrap text-sm text-center px-4 py-3 sm:px-5">
+              <div class="badge rounded-full text-center">
+                <fa-icon (click)="onDetails(assignment)" class="text-gray-500 hover:text-indigo-700 cursor-pointer" [icon]="faeye"></fa-icon>
+              </div>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let assignment; columns: displayedColumns;"></tr>
+        </table>
+      
+        <div class="border-t-2">
+          
+          <mat-paginator [pageSizeOptions]="[1]" showFirstLastButtons aria-label="Select page of assignments"></mat-paginator>
+        
+          </div>
+      </div>
+      
+        
+      </div>
+    </div>
+  </div>
+</main>

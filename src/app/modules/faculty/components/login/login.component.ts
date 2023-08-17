@@ -27,7 +27,6 @@ export class LoginComponent {
 
   createFacultyForm() {
     this.loginForm = this._fb.group({
-      facultyID: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern(GlobalConstants.passPattern)]],
     });

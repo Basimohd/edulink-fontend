@@ -32,6 +32,11 @@
                             </ng-container>
 
                         </select>
+                        <div *ngIf="batchForm.get('department')?.invalid && (batchForm.get('department')?.touched || submitted)">
+                            <div *ngIf="batchForm.get('department')?.errors?.['required']">
+                                <small class="text-red-500">Department is required.</small>
+                                </div>
+                          </div>
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                         <label for="batch" class="block mb-2 text-sm font-medium text-gray-900">Batch</label>
@@ -41,6 +46,11 @@
                           <option selected hidden>Choose a Batch</option>
                           <option *ngFor="let batch of batches" [ngValue]="batch">{{ batch.startYear }} - {{ batch.endYear }}</option>
                         </select>
+                        <div *ngIf="batchForm.get('batch')?.invalid && (batchForm.get('batch')?.touched || submitted)">
+                            <div *ngIf="batchForm.get('batch')?.errors?.['required']">
+                                <small class="text-red-500">Batch is required.</small>
+                                </div>
+                          </div>
                       </div>
                       
                     <div class="col-span-6 sm:col-span-3">
@@ -52,14 +62,28 @@
                                 <option *ngFor="let professor of ProfessorData" [value]="professor._id">{{ professor.facultyName }}</option>
                             </ng-container>
                         </select>
+                        <div *ngIf="batchForm.get('tutor')?.invalid && (batchForm.get('tutor')?.touched || submitted)">
+                            <div *ngIf="batchForm.get('tutor')?.errors?.['required']">
+                                <small class="text-red-500">Tutor is required.</small>
+                                </div>
+                          </div>
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
                         <label for="maxSeats" class="block mb-2 text-sm font-medium text-gray-900">Maximum Seats</label>
-                        <input type="number" name="maxSeats" formControlName="maxSeats" id="maxSeats"
+                        <input appPositiveNumber type="number" name="maxSeats" formControlName="maxSeats" id="maxSeats"
                             class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
                             placeholder="" required="">
+                            <div *ngIf="batchForm.get('maxSeats')?.invalid && (batchForm.get('maxSeats')?.touched || submitted)">
+                                <div *ngIf="batchForm.get('maxSeats')?.errors?.['required']">
+                                    <small class="text-red-500">Maximum Seats is required.</small>
+                                    </div>
+                                <div *ngIf="batchForm.get('maxSeats')?.errors?.['min']">
+                                    <small class="text-red-500">Maximum Seats should be greater than 0.</small>
+                                    </div>
+                              </div>
                     </div>
+                   
 
                 </div>
                 <div class="items-center pt-6 rounded-b border-t border-gray-200">

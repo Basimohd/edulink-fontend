@@ -64,10 +64,10 @@
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="duration" class="block mb-2 text-sm font-medium text-gray-900">Duration</label>
-                        <input
+                        <label for="duration" class="block mb-2 text-sm font-medium text-gray-900" >Duration</label>
+                        <input appPositiveNumber
                             [ngClass]="{error : getControl('step1.duration')?.errors && (getControl('step1.duration')?.touched || stepOne)}"
-                            type="number" name="duration" id="duration" formControlName="duration" appDuration
+                            type="number" name="duration" id="duration" formControlName="duration"
                             class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
                             placeholder="" required="">
                         <div
@@ -89,21 +89,21 @@
                                 <div class="col-span-3 sm:col-span-3">
                                     <label for="tutionFees{{ index }}"
                                         class="block mb-2 text-sm font-medium text-gray-900">Tuition Fees</label>
-                                    <input type="text" [id]="'tutionFees' + index" formControlName="tutionFees"
+                                    <input appPositiveNumber  type="text" [id]="'tutionFees' + index" formControlName="tutionFees"
                                         class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
                                         placeholder="" required="">
                                 </div>
                                 <div class="col-span-3 sm:col-span-3">
                                     <label for="hostelFees{{ index }}"
                                         class="block mb-2 text-sm font-medium text-gray-900">Hostel Fees</label>
-                                    <input type="text" [id]="'hostelFees' + index" formControlName="hostelFees"
+                                    <input appPositiveNumber type="text" [id]="'hostelFees' + index" formControlName="hostelFees"
                                         class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
                                         placeholder="" required="">
                                 </div>
                                 <div class="col-span-3 sm:col-span-3">
                                     <label for="examFees{{ index }}"
                                         class="block mb-2 text-sm font-medium text-gray-900">Exam Fees</label>
-                                    <input type="text" [id]="'examFees' + index" formControlName="examFees"
+                                    <input appPositiveNumber type="text" [id]="'examFees' + index" formControlName="examFees"
                                         class="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
                                         placeholder="" required="">
                                 </div>

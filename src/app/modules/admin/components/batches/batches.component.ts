@@ -10,7 +10,7 @@ import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import { DepartmentService } from '../../services/department.service';
 import { EditBatchComponent } from './edit-batch/edit-batch.component';
-import { ViewStudentsComponent } from './view-students/view-students.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-batches',
@@ -33,6 +33,7 @@ export class BatchesComponent {
     public dialog: MatDialog,
     private _batchService: BatchService,
     private _departmentService: DepartmentService,
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -126,6 +127,7 @@ export class BatchesComponent {
 
     dialogRef.afterClosed().subscribe((departmentForm: FormGroup) => {
       this.loadBatches()
+      
     });
   }
   editBatch(batch:any) {
@@ -137,17 +139,8 @@ export class BatchesComponent {
 
     dialogRef.afterClosed().subscribe((departmentForm: FormGroup) => {
       this.loadBatches()
+      
     });
   }
-  viewStudent() {
-    const dialogRef = this.dialog.open(ViewStudentsComponent, {
-      width: '672px',
-      height: '394px',
-      data: {}
-    });
 
-    dialogRef.afterClosed().subscribe((departmentForm: FormGroup) => {
-      this.loadBatches()
-    });
-  }
 }

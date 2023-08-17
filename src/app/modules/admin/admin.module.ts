@@ -37,7 +37,7 @@ import { CurrencyPipe } from '@angular/common';
 import { EditFacultyComponent } from './components/faculties/edit-faculty/edit-faculty.component';
 import { EditDepartmentComponent } from './components/department/edit-department/edit-department.component';
 import { EditBatchComponent } from './components/batches/edit-batch/edit-batch.component';
-import { ViewStudentsComponent } from './components/batches/view-students/view-students.component'
+import { PositiveNumberDirective } from 'src/app/common/directives/postive-number.directive';
 
 
 @NgModule({
@@ -61,7 +61,7 @@ import { ViewStudentsComponent } from './components/batches/view-students/view-s
     EditFacultyComponent,
     EditDepartmentComponent,
     EditBatchComponent,
-    ViewStudentsComponent,
+    PositiveNumberDirective
   ],
   imports: [
     CommonModule,

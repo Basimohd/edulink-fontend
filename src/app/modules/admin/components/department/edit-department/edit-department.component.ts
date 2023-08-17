@@ -4,6 +4,7 @@ import { FacultyService } from '../../../services/faculty.service';
 import { DepartmentService } from '../../../services/department.service';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-department',
@@ -26,6 +27,7 @@ export class EditDepartmentComponent {
     private departmentService: DepartmentService,
     public dialogRef: MatDialogRef<EditDepartmentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -187,6 +189,9 @@ export class EditDepartmentComponent {
       this.departmentService.updateDepartment(departmentDetails).subscribe((res) => {
         if(res){
           this.dialogRef.close()
+          this._snackBar.open("Department Updated!", 'Close', {
+            duration: 2000,
+          });
         }
       })
     }

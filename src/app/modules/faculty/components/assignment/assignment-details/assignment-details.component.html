@@ -1,0 +1,202 @@
+<app-layout>
+    <main class="main-content w-full px-20 pl-32 pt-20 pb-8">
+      <div>
+        <div class="flex items-center space-x-4 py-1">
+          <div class="flex justify-between  w-full">
+            <div class="flex items-center space-x-2 justify-center ">
+                <a [routerLink]="['/faculty/assignment']" routerLinkActive="router-link-active"  class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+                  Assignments
+                </a>
+                <ul class="hidden flex-wrap items-center space-x-2 sm:flex justify-center">
+                  <li class="flex items-center space-x-2">
+                    <svg x-ignore="" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li>{{ assignmentDetails.title }}</li>
+                </ul>
+              </div>
+             <div>
+             </div>
+        </div>
+         </div>
+        <div class=" mt-3">
+          <div
+            class="is-scrollbar-hidden min-w-full overflow-x-auto"
+          >
+          <div>
+            <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4 mb-6">
+              <div class="flex justify-between">
+                <h3 class="mb-2 text-xl font-bold">{{ assignmentDetails.title }}</h3>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">
+                    <div
+                      *ngIf="assignmentDetails.status == 'open'"
+                      class="badge rounded-full font-bold border border-green-500 text-green-500"
+                    >
+                      OPEN
+                    </div>
+                    <div
+                      *ngIf="assignmentDetails.status == 'closed'"
+                      class="badge rounded-full font-bold border border-red-500 text-red-500"
+                    >
+                      CLOSED
+                    </div>
+                    <div
+                      *ngIf="assignmentDetails.status == 'graded'"
+                      class="badge rounded-full font-bold border border-blue-500 text-blue-500"
+                    >
+                      GRADED
+                    </div>
+                  </dt>
+                </div>
+              </div>
+              <dl class="">
+                <div class="mb-4">
+                  <dt class="text-sm font-medium text-gray-500"></dt>
+                  <dd class="text-sm font-normal text-gray-700 max-w-240 break-words">
+                    {{ assignmentDetails.description }}
+                  </dd>
+                </div>
+                <div>
+                    <dt class="text-sm inline-flex font-medium text-gray-500">
+                      Department :
+                      <div class="pl-3 text-gray-800">
+                        {{ assignmentDetails.department.departmentName }}
+                      </div>
+                    </dt>
+                  </div>
+                <div class="mt-3">
+                  <dt class="text-sm font-medium text-gray-500">
+                    Due Date :
+                    <div class="badge rounded-full border bg-gray-200 text-gray-800">
+                      {{ assignmentDetails.dueDate | date }}
+                    </div>
+                  </dt>
+                </div>
+                <div class="mt-3">
+                  <dt class="text-sm font-medium text-gray-500">
+                    <p class="font-medium text-md  text-gray-800">Submitted : <span class="font-semibold text-black">{{ assignmentDetails.submissions.length }}</span>  student</p>
+                  </dt>
+                </div>
+              </dl>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center space-x-4 py-1">
+          <div class="flex justify-between  w-full">
+            <div class="flex items-center space-x-2 justify-center ">
+                <h2 class="text-xl font-medium text-slate-800 dark:text-navy-50 lg:text-2xl">
+                  Submissions
+                </h2>
+              </div>
+             <div>
+             </div>
+        </div>
+         </div>
+        <div class="card mt-3">
+          <div
+            class="is-scrollbar-hidden min-w-full overflow-x-auto"
+          >
+            <table class="is-hoverable w-full text-left">
+              <thead>
+                <tr>
+                  <th
+                    class="whitespace-nowrap  text-sm  rounded-tl-lg bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"
+                  >
+                    #
+                  </th>
+                  <th
+                    class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"
+                  >
+                    Student name
+                  </th>
+                  <th
+                    class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"
+                  >
+                  batch
+                  </th>
+                  <th
+                    class="whitespace-nowrap  text-center text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"
+                  >
+                    last updated
+                  </th>
+                  <th
+                    class="whitespace-nowrap   text-center text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"
+                  >
+                    files
+                  </th>
+                  <th
+                    class=" text-center whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5"
+                  >
+                    GRADE
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let submission of assignmentDetails.submissions; let i = index"
+                    class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500"
+                  >
+                    <td
+                      class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5"
+                      
+                    >{{i + 1}}</td>
+                    <td class="whitespace-nowrap text-sm  px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
+                    {{submission.studentId.admssionDetails.firstName+" "+submission.studentId.admssionDetails.lastName}}
+                    </td>
+                    <td
+                    
+                    class="whitespace-nowrap text-sm   px-4 py-3 sm:px-5"
+                    >
+                    {{submission.studentId.batch.batch.startYear+" - "+submission.studentId.batch.batch.endYear}}
+                </td>
+                    <td
+                     
+                      class="whitespace-nowrap text-sm  text-center  px-4 py-3 sm:px-5"
+                    >
+                    {{submission.lastUpdated | date}}    
+                </td>
+                    <td
+                     
+                      class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5  text-center"
+                    >
+                    <div class="flex flex-col">
+                        <ng-container *ngFor="let url of submission.fileUrl; let i = index">
+                        <a
+                [href]="url"
+                target="_blank"
+                class=" text-blue-600 font-semibold py-1  rounded transition duration-300 underline"
+              >
+                {{i+1}} - file
+              </a>
+            </ng-container>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap text-sm text-center px-4 py-3 sm:px-5">
+                    <select (change)="changeGrade(submission._id,$event)" class="rounded bg-gray-100 px-3 py-1 border border-gray-300 focus:ring focus:ring-blue-300" [(ngModel)]="submission.grade">
+                      <option value="0" disabled selected>Select Grade</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                  </td>                  
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    </app-layout>
+    

@@ -5,6 +5,7 @@ import { FacultyService } from '../../../services/faculty.service';
 import { department } from '../../../interfaces/department.interface';
 import { BatchService } from '../../../services/batches.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class EditBatchComponent {
   batchForm!:FormGroup
   ProfessorData !:any[] | undefined
   batches: any[] = [];
+  submitted:boolean = false
+
 
   constructor(
     private _departmentService: DepartmentService,
@@ -24,6 +27,7 @@ export class EditBatchComponent {
     private _fb: FormBuilder,
     public dialogRef: MatDialogRef<EditBatchComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -83,11 +87,15 @@ export class EditBatchComponent {
   }
 
   onSubmit(){
+    this.submitted = true;
     if(this.batchForm.valid){
       const batchData = {batchId:this.data.batch._id,...this.batchForm.value}
       this._batchService.updateBatch(batchData).subscribe((res)=>{
         if(res){
           this.dialogRef.close()
+          this._snackBar.open("Batch Updated!", 'Close', {
+            duration: 2000,
+          });
         }
       })
     }

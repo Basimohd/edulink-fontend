@@ -1,39 +1,46 @@
-<div class="container grid px-6 mx-auto">
-    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Fees
-    </h2>
-    <!-- CTA -->
-    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-        <div class="w-full overflow-x-auto">
+
+<main class="main-content w-full px-20 pl-32 pt-20 pb-8">
+    <div>
+      <div class="flex md:flex-row flex-col justify-between items-center space-x-4 py-1">
+        <h2 class="text-xl font-medium text-gray-800 dark:text-navy-50 lg:text-2xl">
+          Fees
+        </h2>
+       </div>
+      <div class="card mt-3">
+        <div
+          class="is-scrollbar-hidden min-w-full overflow-x-auto"
+        >
+  
+        <div class="mat-elevation-z8">
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-gray-600 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                        <th class="px-4 py-3">YEAR</th>
-                        <th class="px-4 py-3">Tution Fees</th>
-                        <th class="px-4 py-3">Hostel Fees</th>
-                        <th class="px-4 py-3">Exam Fees</th>
-                        <th class="px-4 py-3">Total</th>
-                        <th class="px-4 py-3">Action</th>
+                        <th class="whitespace-nowrap  text-sm  rounded-tl-lg bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">YEAR</th>
+                        <th class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">Tution Fees</th>
+                        <th class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">Hostel Fees</th>
+                        <th class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">Exam Fees</th>
+                        <th class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">Total</th>
+                        <th class="whitespace-nowrap  text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    <tr *ngFor="let fee of feeDetails" class="text-gray-700 dark:text-gray-400">
+                    <tr *ngFor="let fee of feeDetails" class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
                       
-                        <td class="px-4 py-3 text-sm font-bold">
+                        <td class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5 font-bold">
                             {{fee.year}}
                         </td>
                         
-                        <td class="px-4 py-3 text-sm font-medium">
+                        <td class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5 font-medium text-gray-700">
                             {{ fee.tutionFees | currency:'INR'}}
                         </td>
-                        <td class="px-4 py-3 text-sm font-medium">
+                        <td class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5 font-medium text-gray-700">
                             {{fee.hostelFees  | currency:'INR'}}
                         </td>
-                        <td class="px-4 py-3 text-sm font-medium">
+                        <td class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5 font-medium text-gray-700">
                             {{fee.examFees  | currency:'INR'}}
                         </td>
-                        <td class="px-4 py-3 text-sm font-medium">
+                        <td class="whitespace-nowrap text-sm  px-4 py-3 sm:px-5 font-medium text-gray-700">
                             {{ [fee.tutionFees , fee.hostelFees , fee.examFees ] | sum | currency:'INR'}}
                             
                         </td>
@@ -48,6 +55,10 @@
                 </tbody>
             </table>
         </div>
+        
+          
+        </div>
+      </div>
     </div>
-
-</div>
+  </main>
+  
