@@ -78,7 +78,7 @@
         <!-- Profile -->
         <div x-data="usePopper({placement:'right-end',offset:12})"  class="flex">
           <button (click)="onProfile()"  x-ref="popperRef" class="avatar h-12 w-12">
-            <img class="rounded-full h-12 w-12" [src]="'http://localhost:3000/uploads/' + studentData.admssionDetails.profilePicture"
+            <img class="rounded-full h-12 w-12" [src]="'api.edulinkcollege.online/uploads/' + studentData.admssionDetails.profilePicture"
             alt="avatar">
             <span class="absolute right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"></span>
           </button>
@@ -92,7 +92,7 @@
                 <div class="avatar h-14 w-14">
                   <img
                     class="rounded-full  h-14 w-14"
-                    [src]="'http://localhost:3000/uploads/' + studentData.admssionDetails.profilePicture"
+                    [src]="'api.edulinkcollege.online/uploads/' + studentData.admssionDetails.profilePicture"
                     alt="avatar"
                   />
                 </div>
