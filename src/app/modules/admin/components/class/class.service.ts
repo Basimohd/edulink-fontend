@@ -12,15 +12,15 @@ export class ClassService {
   fetchDivision(classNumber:number):Observable<any> {
     let params = new HttpParams();
     params = params.set('classNum', classNumber);
-      return this.http.get('api.edulinkcollege.online/class/division',{params:params})
+      return this.http.get('https://api.edulinkcollege.online/class/division',{params:params})
   }
 
   createClass(classDatas:any):Observable<any> {
-      return this.http.post('api.edulinkcollege.online/class/addClass',classDatas)
+      return this.http.post('https://api.edulinkcollege.online/class/addClass',classDatas)
   }
   
   fetchAllService(){
-    return this.http.get('api.edulinkcollege.online/class')
+    return this.http.get('https://api.edulinkcollege.online/class')
   }
 
 }
