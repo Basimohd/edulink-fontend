@@ -17,6 +17,13 @@ import { AssignmentDetailsComponent } from './components/assignment/assignment-d
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { ChatComponent } from './components/chat/chat.component';
+import { ApproveGroupsComponent } from './components/chat/approve-groups/approve-groups.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { AttendanceChartComponent } from './components/dashboard/attendance-chart/attendance-chart.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { StudentsComponent } from './components/students/students.component';
+import { StudentDetailsComponent } from './components/students/student-details/student-details.component';
 
 
 
@@ -32,7 +39,13 @@ import { MatTableModule } from '@angular/material/table';
     AssignmentComponent,
     AddAssignmentComponent,
     AssignmentDetailsComponent,
-    SetPasswordComponent
+    SetPasswordComponent,
+    ChatComponent,
+    ApproveGroupsComponent,
+    AttendanceChartComponent,
+    ProfileComponent,
+    StudentsComponent,
+    StudentDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +56,7 @@ import { MatTableModule } from '@angular/material/table';
     FontAwesomeModule,
     MatTableModule,
     MatPaginatorModule,
+    NgApexchartsModule,
   ]
 })
 export class FacultyModule { }

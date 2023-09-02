@@ -1,0 +1,433 @@
+<app-layout>
+    <main class=" sm:ml-20 ">
+        <div class="flex">
+        <div class="sidebar-panel  min-w-full sm:min-w-72 sm:max-w-72 sm:block" [ngClass]="{ 'hidden': groupType }">
+            <div
+              class=" h-screen sm:pt-[54px] flex grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750"
+            >
+              <!-- Sidebar Paneiconl Header -->
+          
+        
+              <!-- Sidebar Panel Body -->
+              <div class="flex h-[calc(100%-4.5rem)] grow flex-col">
+                <div class="flex h-18 w-full items-center justify-between pl-4 pr-1 pt-5">
+                    <div class="flex items-center">
+                      <div class="avatar mr-3 hidden h-9 w-9 lg:flex">
+                        <div class="is-initial rounded-full bg-indigo-600/10 text-indigo-600 dark:bg-accent-light/10 dark:text-accent-light">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <p class="text-lg font-medium tracking-wider text-slate-800 line-clamp-1 dark:text-navy-100">
+                        Chat
+                      </p>
+                    </div>
+      
+                  </div>
+        
+                <div class="mt-4 flex px-4">
+                  <label class="relative mr-1.5 flex w-full ">
+                    <input
+                      class="form-input peer h-9 w-full rounded-lg bg-slate-200/50 border-none px-4 py-2 pl-9 text-xs+ ring-indigo-600/50 placeholder:text-slate-400 hover:bg-slate-100 focus:border-none dark:bg-navy-900/90 dark:ring-accent/50 dark:placeholder:text-navy-300 dark:hover:bg-navy-900 dark:focus:bg-navy-900"
+                      placeholder="Search chats"
+                      type="text"
+                    />
+                    <span
+                      class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 transition-colors duration-200"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M3.316 13.781l.73-.171-.73.171zm0-5.457l.73.171-.73-.171zm15.473 0l.73-.171-.73.171zm0 5.457l.73.171-.73-.171zm-5.008 5.008l-.171-.73.171.73zm-5.457 0l-.171.73.171-.73zm0-15.473l-.171-.73.171.73zm5.457 0l.171-.73-.171.73zM20.47 21.53a.75.75 0 101.06-1.06l-1.06 1.06zM4.046 13.61a11.198 11.198 0 010-5.115l-1.46-.342a12.698 12.698 0 000 5.8l1.46-.343zm14.013-5.115a11.196 11.196 0 010 5.115l1.46.342a12.698 12.698 0 000-5.8l-1.46.343zm-4.45 9.564a11.196 11.196 0 01-5.114 0l-.342 1.46c1.907.448 3.892.448 5.8 0l-.343-1.46zM8.496 4.046a11.198 11.198 0 015.115 0l.342-1.46a12.698 12.698 0 00-5.8 0l.343 1.46zm0 14.013a5.97 5.97 0 01-4.45-4.45l-1.46.343a7.47 7.47 0 005.568 5.568l.342-1.46zm5.457 1.46a7.47 7.47 0 005.568-5.567l-1.46-.342a5.97 5.97 0 01-4.45 4.45l.342 1.46zM13.61 4.046a5.97 5.97 0 014.45 4.45l1.46-.343a7.47 7.47 0 00-5.568-5.567l-.342 1.46zm-5.457-1.46a7.47 7.47 0 00-5.567 5.567l1.46.342a5.97 5.97 0 014.45-4.45l-.343-1.46zm8.652 15.28l3.665 3.664 1.06-1.06-3.665-3.665-1.06 1.06z"
+                        />
+                      </svg>
+                    </span>
+                  </label>
+        
+                 
+                </div>
+        
+                <div
+                  class=" no-scrollbar mt-3 flex grow flex-col overflow-y-auto"
+                >
+    
+                <div class="mb-2">
+                    <div class="flex items-center justify-between px-4">
+                        <span class="text-sm font-medium uppercase">COMMUNITIES</span>
+                        
+                      </div>
+    
+                      <div *ngFor="let community of communities" (click)="onCommunity(community._id)"
+                        class="flex cursor-pointer items-center space-x-2.5 px-4 py-2.5 font-inter hover:bg-indigo-100/40 dark:hover:bg-navy-600"
+                      >
+                        <div class="avatar h-10 w-10">
+                          <img
+                            class="rounded-full"
+                            src="assets\Images\announcement.png"
+                            alt="avatar"
+                          />
+                        </div>
+                        <div class="flex flex-1 flex-col">
+                          <div
+                            class="flex items-baseline justify-between space-x-1.5"
+                          >
+                            <p
+                              class="text-md font-medium text-slate-700 line-clamp-1 dark:text-navy-100"
+                            >
+                              {{community.departmentId.departmentName}}
+                            </p>
+                          </div>
+                          <div
+                            class="flex items-center justify-between"
+                          >
+                          <p *ngIf="community.messages.length > 0"  class="text-sm text-slate-400 line-clamp-1 dark:text-navy-300">
+                            <ng-container *ngIf="community.messages[community.messages.length - 1].facultySender">
+                              <ng-container *ngIf="community.messages[community.messages.length - 1].facultySender._id !== facultyId; else yourSelf">
+                                {{ community.messages[community.messages.length - 1].facultySender.facultyName }} :
+                              </ng-container>
+                              <ng-template #yourSelf>
+                                You :
+                              </ng-template>
+                            </ng-container>
+                            <ng-container *ngIf="community.messages[community.messages.length - 1].studentSender">
+                              {{ community.messages[community.messages.length - 1].studentSender.username }}:
+                            </ng-container>
+                            {{ community.messages[community.messages.length - 1].message }}
+                          </p>
+                            <!-- <div
+                              class="flex h-4.5 min-w-[1.125rem] items-center justify-center rounded-full bg-slate-200 px-1.5 text-sm font-medium leading-none text-slate-800 dark:bg-navy-450 dark:text-white"
+                            >
+                              5
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                  <hr>
+                <div class="flex items-center justify-between px-4 mt-4">
+                    <span class="text-sm font-medium uppercase">GROUPS</span>
+                    <div class=" flex">
+                      <button (click)="onApprovals()" class="flex justify-center items-center  rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 text-xs px-2 py-1">
+                        APPROVALS
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                  *ngFor="let group of groups"
+                  (click)="onGroup(group._id)"
+    
+                  class="flex cursor-pointer items-center space-x-2.5 px-4 py-2 font-inter hover:bg-indigo-100/40 dark:hover:bg-navy-600"
+                >
+                <div class="avatar h-10 w-10">
+                  <img
+                    class="rounded-full"
+                    src="images/200x200.png"
+                    alt="avatar"
+                  />
+                </div>
+                <div class="flex flex-1 flex-col">
+                  <div class="flex items-baseline justify-between space-x-1.5">
+                    <p
+                      class="text-md font-medium text-slate-700 line-clamp-1 dark:text-navy-100"
+                    >
+                      {{ group.groupName }}
+                    </p>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between space-x-1">
+                    <p *ngIf="group.messages.length > 0"  class="text-sm text-slate-400 line-clamp-1 dark:text-navy-300">
+                      <ng-container *ngIf="group.messages[group.messages.length - 1].facultySender">
+                        {{ group.messages[group.messages.length - 1].facultySender.facultyName }} :
+                       
+                      </ng-container>
+                      <ng-container *ngIf="group.messages[group.messages.length - 1].studentSender">
+                        <ng-container *ngIf="group.messages[group.messages.length - 1].studentSender._id !== studentId; else yourSelf">
+                        {{ group.messages[group.messages.length - 1].studentSender.username }} :
+                        </ng-container>
+                        <ng-template #yourSelf>
+                          You :
+                        </ng-template>
+                      </ng-container>
+                      {{ group.messages[group.messages.length - 1].message }}
+                    </p>
+                  </div>
+                </div>
+                </div>
+                 
+                </div>
+        
+             
+              </div>
+            </div>
+          </div>
+    
+    <!---  Main content ---->
+    <div class="w-full sm:block" *ngIf="!groupType"   [ngClass]="{ 'hidden': !groupType }">
+      <div class="flex flex-col w-full justify-center items-center h-full">
+        <img class="h-60" src="assets\Images\no-chat.svg" alt="asd" />
+        <p class="text-xl font-bold -mt-2 text-black mb-2">
+          Resume where you left off
+        </p>
+        <p class="text-sm font-medium">
+          Choose a chat or start one
+        </p>
+      </div>
+    </div>
+          <div *ngIf="groupType"
+    class="main-content h-100vh chat-app mt-0 flex w-full flex-col justify-end items-end right-0 relative  h-screen sm:pt-[54px]"
+    >
+    <div
+      class="chat-header z-10 flex flex-0 h-[61px] w-full shrink-0 items-center justify-between border-b border-slate-150 bg-white px-[calc(var(--margin-x)-.5rem)] shadow-sm transition-[padding,width] duration-[.25s] dark:border-navy-700 dark:bg-navy-800   left-0 right-0 top-[56px]"
+    >
+      <div class="flex items-center space-x-3">
+        <div class="ml-3 h-7 w-7 flex justify-center items-center">
+          <button
+            class="menu-toggle ml-0.5 flex h-7 w-7 flex-col justify-center space-y-1.5 text-primary outline-none focus:outline-none dark:text-accent-light/80"
+            (click)="onBack()"
+          >
+          <fa-icon
+          class="text-gray-500 hover:text-indigo-600"  [icon]="faChevronLeft"></fa-icon>
+          </button>
+        </div>
+        <div
+        
+          class="flex cursor-pointer items-center space-x-4 font-inter"
+        >
+          <div class="avatar">
+            <img
+                      *ngIf="groupType == 'community'"
+                      class="rounded-full"
+                      src="assets\Images\announcement.png"
+                      alt="avatar"
+                    />
+                    <img
+                      *ngIf="groupType == 'group'"
+                      class="rounded-full"
+                      src=""
+                      alt="avatar"
+                    />
+          </div>
+          <div>
+            <p
+              class="font-medium text-slate-700 line-clamp-1 dark:text-navy-100"
+              x-text="activeChat.name"
+            >
+            {{groupName}}
+          </p>
+            <p class="mt-0.5 text-xs">{{groupCount}} 
+                <span *ngIf="groupType == 'community'"> Groups</span>
+                <span *ngIf="groupType == 'group'"> Participant</span>
+              </p>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    
+    <div
+    class="grow w-full overflow-y-auto px-4 py-5 transition-all duration-[.25s]"
+  >
+    <div class="message-group" *ngFor="let group of groupedMessages">
+      <div class="mx-4 flex items-center space-x-3">
+        <div class="h-px flex-1 bg-slate-200 dark:bg-navy-500"></div>
+        <p>{{ group.date }}</p>
+        <div class="h-px flex-1 bg-slate-200 dark:bg-navy-500"></div>
+      </div>
+
+      <div *ngFor="let message of group.messages">
+        <ng-container *ngIf="message.facultySender; else studentBlock">
+          <ng-container
+            *ngIf="message.facultySender._id !== facultyId; else leftSide"
+          >
+          <div class="flex items-start space-x-2.5 sm:space-x-5">
+            <div class="avatar">
+             <img
+               class="rounded-full"
+               [src]="
+                 'http://localhost:3000/uploads/' +
+                 message.facultySender.profilePicture
+               "
+               alt="avatar"
+             />
+           </div>
+ 
+           <div class="flex flex-col justify-end space-y-3.5">
+             <div class="mr-4 max-w-lg sm:mr-10">
+               <p
+                 class="mb-0.5 ml-auto text-start text-sm text-slate-400 dark:text-navy-300"
+               >
+                 {{ message.facultySender.facultyName }}
+               </p>
+               <div
+                 class="rounded-2xl rounded-tl-none bg-white p-3 text-slate-700 shadow-sm dark:bg-navy-700 dark:text-navy-100"
+               >
+                 {{ message.message }}
+               </div>
+               <p
+                 class="mt-1 ml-auto text-right text-xs text-slate-400 dark:text-navy-300"
+               >
+                 {{ message.timestamp | date : "hh:mm a" }}
+               </p>
+             </div>
+           </div>
+          </div>
+           
+          </ng-container>
+          <ng-template #leftSide>
+            <div
+              class="flex items-start justify-end space-x-2.5 sm:space-x-5"
+            >
+              <div class="flex flex-col items-end space-y-3.5">
+                <div class="ml-4 max-w-lg sm:ml-10">
+                  <p
+                    class="mb-0.5 mr-auto text-end text-sm text-slate-400 dark:text-navy-300"
+                  >
+                  You
+
+                  </p>
+                  <div
+                    class="rounded-2xl rounded-tr-none bg-indigo-100 p-3 text-slate-700 shadow-sm dark:bg-accent dark:text-white"
+                  >
+                  {{ message.message }}
+
+                  </div>
+                  <p
+                    class="mt-1 ml-auto text-right text-xs text-slate-400 dark:text-navy-300"
+                  >
+                  {{ message.timestamp | date : "hh:mm a" }}
+
+                  </p>
+                </div>
+              </div>
+              <div class="avatar">
+                <img
+                  class="rounded-full"
+                  [src]="
+                 'http://localhost:3000/uploads/' +
+                 message.facultySender.profilePicture
+               "
+                  alt="avatar"
+                />
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+
+        <ng-template #studentBlock>
+          <div class="flex items-start space-x-2.5 sm:space-x-5">
+            <div class="avatar">
+              <img
+                class="rounded-full"
+                [src]="
+                  'http://localhost:3000/uploads/' +
+                  message.studentSender.admssionDetails.profilePicture
+                "
+                alt="avatar"
+              />
+            </div>
+
+            <div class="flex flex-col justify-end space-y-3.5">
+              <div class="mr-4 max-w-lg sm:mr-10">
+                <p
+                  class="mb-0.5 ml-auto text-start text-sm text-slate-400 dark:text-navy-300"
+                >
+                  {{ message.studentSender.username }}
+                </p>
+                <div
+                  class="rounded-2xl rounded-tl-none bg-white p-3 text-slate-700 shadow-sm dark:bg-navy-700 dark:text-navy-100"
+                >
+                  {{ message.message }}
+                </div>
+                <p
+                  class="mt-1 ml-auto text-right text-xs text-slate-400 dark:text-navy-300"
+                >
+                  {{ message.timestamp | date : "hh:mm a" }}
+                </p>
+              </div>
+            </div>
+           </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+    
+    <div
+      class="chat-footer  flex h-14 w-full shrink-0 items-center justify-between border-t border-slate-150 bg-white px-5 transition-[padding,width] duration-[.25s] dark:border-navy-600 dark:bg-navy-800"
+    >
+      <div class=" flex flex-1 space-x-2">
+        <button
+          class="flex justify-center items-center h-9 w-9 shrink-0 rounded-full p-0 text-slate-500 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5.5 w-5.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
+            />
+          </svg>
+        </button>
+    
+        <input [(ngModel)]="textMessage" 
+        (keydown.enter)="onSend()"
+          type="text"
+          class="form-input h-9 w-full bg-transparent placeholder:text-slate-400/70 focus:ring-0 border-none"
+          placeholder="Write the message"
+        />
+      </div>
+    
+      <div class="-mr-1.5 flex">
+        <button
+          class="flex justify-center items-center h-9 w-9 shrink-0 rounded-full p-0 text-slate-500 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5.5 w-5.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
+        <button (click)="onSend()"
+          class="flex justify-center items-center h-9 w-9 shrink-0 rounded-full p-0 text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5.5 w-5.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m9.813 5.146 9.027 3.99c4.05 1.79 4.05 4.718 0 6.508l-9.027 3.99c-6.074 2.686-8.553.485-5.515-4.876l.917-1.613c.232-.41.232-1.09 0-1.5l-.917-1.623C1.26 4.66 3.749 2.46 9.813 5.146ZM6.094 12.389h7.341"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    </div>
+    </div>
+    </main>
+    
+    
+</app-layout>

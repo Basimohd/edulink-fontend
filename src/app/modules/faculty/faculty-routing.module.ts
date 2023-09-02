@@ -8,12 +8,18 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { AssignmentComponent } from './components/assignment/assignment.component';
 import { AssignmentDetailsComponent } from './components/assignment/assignment-details/assignment-details.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { StudentsComponent } from './components/students/students.component';
 
 const routes: Routes = [
     {path:'login',component:LoginComponent, canActivate: [AuthGuardReverese] },
     {path:'dashboard',component:DashboardComponent, canActivate: [AuthGuard] },
     {path:'attendance',component:AttendanceComponent, canActivate: [AuthGuard] },
     {path:'assignment',component:AssignmentComponent, canActivate: [AuthGuard] },
+    {path:'chat',component:ChatComponent, canActivate: [AuthGuard] },
+    {path:'profile',component:ProfileComponent, canActivate: [AuthGuard] },
+    {path:'students',component:StudentsComponent, canActivate: [AuthGuard] },
     {path:'set-password/:token',component:SetPasswordComponent },
     {path:'assignment/details',component:AssignmentDetailsComponent,canActivate:[AuthGuard]},
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },

@@ -7,13 +7,19 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { AuthGuard } from '../user/guards/auth.guard';
 import { AttendaceChartComponent } from './components/attendance/attendace-chart/attendace-chart.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { StudentGuard } from './guards/student.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', component: StudentPortalComponent, canActivate: [AuthGuard], children: [
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'fees', component: FeesComponent },
-    { path: 'attendance', component: AttendanceComponent },
-    { path: 'assignment', component: AssignmentComponent },
+  { path: '', component: StudentPortalComponent, canActivate: [StudentGuard], children: [
+    { path: 'dashboard', component: ProfileComponent, canActivate: [StudentGuard] },
+    { path: 'fees', component: FeesComponent, canActivate: [StudentGuard] },
+    { path: 'attendance', component: AttendanceComponent, canActivate: [StudentGuard] },
+    { path: 'assignment', component: AssignmentComponent, canActivate: [StudentGuard] },
+    { path: 'chat', component: ChatComponent, canActivate: [StudentGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [StudentGuard] },
+    { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   ]}
 ];
 

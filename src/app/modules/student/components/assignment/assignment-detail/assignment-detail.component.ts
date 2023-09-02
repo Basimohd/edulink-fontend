@@ -27,9 +27,10 @@ export class AssignmentDetailComponent {
 
   ngOnInit() {
     this.assignmentDetails = this.data.assignmentDetails
-    this.loadFiles()    
-    this.fileUrls = this.submissions.fileUrl;
-    this.getFileNames();
+    
+      this.loadFiles()   
+      this.fileUrls = this.submissions.fileUrl;
+      this.getFileNames();
   }
 
   loadFiles(){

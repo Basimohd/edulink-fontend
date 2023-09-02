@@ -24,8 +24,8 @@ export class AdmissionApprovalComponent {
   ) { }
 
   ngOnInit(){
-    this.fetchBatches(this.data.department._id)
     this.fetchDepartment();
+    this.fetchBatches(this.data.department._id)
     this.approvalForm.get('department')?.setValue(this.data.department._id)
   }
 
@@ -40,6 +40,8 @@ export class AdmissionApprovalComponent {
   }
   fetchBatches(departmentId:string){
     this._admissionService.fetchBatchesByDepartment(departmentId).subscribe((res)=>{
+      console.log(res);
+      
       this.batches = res.batches
     })
   }

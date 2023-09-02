@@ -12,9 +12,10 @@ export class studentService {
     }
 
     fetchStudentsByDepartment(facultyId: string | null): Observable<any> {
-        return this.http.get(`${this.domain}user/students/${facultyId}`)
+        return this.http.get(`${this.domain}faculty/students/${facultyId}`)
     }
+
     updateLeaveStatus(updateData: any): Observable<any> {
-        return this.http.patch(`${this.domain}user/updateLeave`,updateData)
+        return this.http.patch(`${this.domain}faculty/updateLeave`,updateData)
     }
 }

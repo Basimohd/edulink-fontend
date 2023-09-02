@@ -28,4 +28,8 @@ export class authService {
         const body = { credential };
         return this.http.post(`${this.domain}user/loginWithGoogle`, body, { withCredentials: true });
     }
+
+    getHomeCount(){
+        return this.http.get(`${this.domain}user/homeCount`)
+    }
 }

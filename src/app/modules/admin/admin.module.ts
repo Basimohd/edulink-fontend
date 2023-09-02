@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdmissionComponent } from './components/admission/admission.component';
 import { EventsComponent } from './components/events/events.component';
 import { StudentsComponent } from './components/students/students.component';
+import { StudentDetailComponent } from './components/students/student-details/student-details.component';
 import { ClassComponent } from './components/class/class.component';
 import { LoginComponent } from './components/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -38,6 +39,8 @@ import { EditFacultyComponent } from './components/faculties/edit-faculty/edit-f
 import { EditDepartmentComponent } from './components/department/edit-department/edit-department.component';
 import { EditBatchComponent } from './components/batches/edit-batch/edit-batch.component';
 import { PositiveNumberDirective } from 'src/app/common/directives/postive-number.directive';
+import { AdmissionChartComponent } from './components/dashboard/admission-chart/admission-chart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -58,10 +61,12 @@ import { PositiveNumberDirective } from 'src/app/common/directives/postive-numbe
     AddDepartmentComponent,
     AddBatchComponent,
     StudentDetailsComponent,
+    StudentDetailComponent,
     EditFacultyComponent,
     EditDepartmentComponent,
     EditBatchComponent,
-    PositiveNumberDirective
+    PositiveNumberDirective,
+    AdmissionChartComponent
   ],
   imports: [
     CommonModule,
@@ -78,7 +83,8 @@ import { PositiveNumberDirective } from 'src/app/common/directives/postive-numbe
     MatPaginatorModule,
     MatSortModule,
     HttpClientModule,
-    ExportAsModule
+    ExportAsModule,
+    NgApexchartsModule
   ],
   providers: [DatePipe,CurrencyPipe]
 })

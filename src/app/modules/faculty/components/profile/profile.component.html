@@ -1,0 +1,37 @@
+<app-layout>
+  <div class="p-16 sm:ml-20">
+    <div class="p-8 bg-white shadow mt-24">
+      <div class="grid grid-cols-1">
+        <div class="relative">
+          <img
+            [src]="
+              'http://localhost:3000/uploads/' + facultyData.profilePicture
+            "
+            class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500"
+          />
+        </div>
+      </div>
+      <div class="mt-34 text-center pb-12">
+        <h1 class="text-4xl font-medium text-gray-700">
+          {{ facultyData.facultyName }}
+        </h1>
+        <p class="font-light text-gray-600 mt-3">
+          Faculty #{{ facultyData.facultyId }}
+          <span *ngIf="facultyData.isHOD">HOD</span>
+        </p>
+
+        <p class="mt-7 text-gray-500">Email : {{ facultyData.email }}</p>
+        
+        <p class="mt-2 text-gray-500">
+          Password : ************ 
+        </p>
+        <p class="mt-2 text-gray-500">
+          Phone No : {{ facultyData.phoneNumber }}
+        </p>
+        <p class="mt-2 text-gray-500">
+          Joined At : {{ facultyData.joinedAt | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+</app-layout>

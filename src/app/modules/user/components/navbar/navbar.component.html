@@ -1,49 +1,57 @@
-<nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 ">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a [routerLink]="" class="flex items-center">
+<nav class=" dark:bg-gray-900 fixed w-full z-20 top-0 left-0  dark:border-gray-600 " [ngStyle]="navbg">
+  <div class="max-w-screen-xl flex flex-wrap items-center xl:mx-52 mx-5 justify-between  p-4">
+    <a routerLink="/" class="flex items-center cursor-pointer">
       <img src="assets/Images/logo.png" class="h-8 mr-3" alt="Flowbite Logo">
     </a>
     <div class="flex md:order-2">
       <li class="list-none pr-4 pt-2">
         
-<button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent" type="button">
+<button (click)="onDropDown()" class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-indigo-600 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent" type="button">
   <fa-icon [icon]="faUser"></fa-icon>
 </button>
 
 <!-- Dropdown menu -->
-<div id="dropdownInformation" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+<div *ngIf="isDropDown" class="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 mt-4">
   <div class="px-4 py-3 text-sm text-gray-900 dark:text-white" *ngIf="userDetails">
     <div>Bonnie Green</div>
     <div class="font-medium truncate">name@flowbite.com</div>
   </div>
   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
-    <ng-container *ngIf="!isStudentLogin(); else studentDd">
+    <ng-container *ngIf="!isStudentLogin() ">
       <li>
         <a routerLink="/login" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Student Login</a>
       </li>
+      
+    </ng-container>
+    
+    <ng-container *ngIf="!isFacultyLogin()">
       <li>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Teacher Login</a>
+        <a routerLink="/faculty/login" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Faculty Login</a>
+      </li>
+      
+    </ng-container>
+
+    <ng-container *ngIf="isStudentLogin() && adimssion">
+      <li>
+        <a routerLink="/student" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Student Portal</a>
+      </li>
+      <li>
+        <a routerLink="/admission-status" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admission Status</a>
       </li>
     </ng-container>
-    <ng-template #studentDd>
+    <ng-container *ngIf="isFacultyLogin()">
       <li>
-        <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admission</a>
+        <a routerLink="/faculty" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Faculty Portal</a>
       </li>
-      <li>
-        <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admission Status</a>
-      </li>
-      <div class="py-2" (click)="onLogout()">
-        <a class="font-medium block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
-      </div>
-    </ng-template>
+    </ng-container>
     
   </ul>
 </div>
 
 
       </li>
-      <button routerLink="/admission" type="button"
-        class="text-white bg-teal-500 hover:bg-gray-600 active:bg-blue-400 focus:outline-none focus:ring-gray-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-teal-600 dark:hover:bg-blue-700 dark:focus:ring-gray-800">Admission
+      <button routerLink="/admission" type="button" *ngIf="!adimssion"
+        class="text-white bg-indigo-600 hover:bg-gray-600 active:bg-blue-400 focus:outline-none focus:ring-gray-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-teal-600 dark:hover:bg-blue-700 dark:focus:ring-gray-800">Admission
         Enquiry</button>
 
 
@@ -65,25 +73,25 @@
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-gilroy font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        class="flex flex-col p-4 md:p-0 mt-4   border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
-          <a routerLink="/" [routerLinkActive]="['text-teal-700']"
-            class="block py-2 pl-3 pr-4 text-dark bg-teal-700 rounded md:bg-transparent md:p-0 md:hover:text-teal-700 md:dark:text-teal-500 bg-transparent" 
+          <a routerLink="/" [routerLinkActive]="['text-indigo-600']"
+            class="block py-2 pl-3 pr-4 text-dark bg-indigo-600 rounded md:bg-transparent md:p-0 md:hover:text-indigo-600 md:dark:text-teal-500 bg-transparent " 
             aria-current="page">Home</a>
         </li>
         <li>
-          <a routerLink="/events" [routerLinkActive]="['text-teal-700']"
-            class="block py-2 pl-3 pr-4 text-dark bg-teal-700 rounded md:bg-transparent md:p-0 md:hover:text-teal-700 md:dark:text-teal-500  bg-transparent" 
+          <a routerLink="/events" [routerLinkActive]="['text-indigo-600']"
+            class="block py-2 pl-3 pr-4 text-dark bg-indigo-600 rounded md:bg-transparent md:p-0 md:hover:text-indigo-600 md:dark:text-teal-500  bg-transparent" 
             aria-current="page">Events</a>
         </li>
         <li>
-          <a routerLink="/about" [routerLinkActive]="['text-teal-700']"
-            class="block py-2 pl-3 pr-4 text-dark bg-teal-700 rounded md:bg-transparent md:p-0 md:hover:text-teal-700 md:dark:text-teal-500  bg-transparent" 
-            aria-current="page">About Us</a>
+          <a routerLink="/about" [routerLinkActive]="['text-indigo-600']"
+            class="block py-2 pl-3 pr-4 text-dark bg-indigo-600 rounded md:bg-transparent md:p-0 md:hover:text-indigo-600 md:dark:text-teal-500  bg-transparent" 
+            aria-current="page">Departments</a>
         </li>
         <li>
-          <a routerLink="/contact" [routerLinkActive]="['text-teal-700']"
-            class="block py-2 pl-3 pr-4 text-dark bg-teal-700 rounded md:bg-transparent md:p-0 md:hover:text-teal-700 md:dark:text-teal-500  bg-transparent" 
+          <a routerLink="/contact" [routerLinkActive]="['text-indigo-600']"
+            class="block py-2 pl-3 pr-4 text-dark bg-indigo-600 rounded md:bg-transparent md:p-0 md:hover:text-indigo-600 md:dark:text-teal-500  bg-transparent" 
             aria-current="page">Contact Us</a>
         </li>
       </ul>

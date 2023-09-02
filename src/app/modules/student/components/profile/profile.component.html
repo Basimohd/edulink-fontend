@@ -1,0 +1,36 @@
+
+    <div class="p-16 sm:ml-20">
+      <div class="p-8 bg-white shadow mt-24">
+        <div class="grid grid-cols-1">
+          <div class="relative">
+            <img
+              [src]="
+                'http://localhost:3000/uploads/' + studentData.admssionDetails.profilePicture
+              "
+              class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500"
+            />
+          </div>
+        </div>
+        <div class="mt-34 text-center pb-12">
+          <h1 class="text-4xl font-medium text-gray-700">
+            {{ studentData.admssionDetails.firstName + " "+  studentData.admssionDetails.lastName }}
+          </h1>
+          <p class="font-light text-gray-600 mt-3">
+            Admission #{{ studentData.admssionDetails.admissionId }}
+          </p>
+  
+          <p class="mt-7 text-gray-500">Email : {{ studentData.email }}</p>
+          
+          <p class="mt-2 text-gray-500">
+            Password : ************ 
+          </p>
+          <p class="mt-2 text-gray-500">
+            Phone No : {{ studentData.admssionDetails.studentPhone }}
+          </p>
+          <p class="mt-2 text-gray-500">
+            Admssion Date : {{ studentData.admssionDetails.admissionDate | date }}
+          </p>
+        </div>
+      </div>
+    </div>
+  

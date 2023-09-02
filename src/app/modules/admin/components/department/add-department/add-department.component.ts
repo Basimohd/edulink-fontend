@@ -49,9 +49,6 @@ export class AddDepartmentComponent {
         professors: this.fb.array([], [Validators.required, professorsValidator])
       })
     })
-
-
-
     this.getFaculties()
   }
 
@@ -72,7 +69,6 @@ export class AddDepartmentComponent {
   isProfessorAlreadyAdded(professorId: string): boolean {
     return this.professorsFormArray.value.includes(professorId);
   }
-  
   
 
   getProfessorNameById(professorId: string): string {

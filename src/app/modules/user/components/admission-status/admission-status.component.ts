@@ -5,6 +5,7 @@ import { Form, FormBuilder, Validators } from '@angular/forms';
 import { admissionService } from '../../services/admission.service';
 import { admissionStatus } from './admission.enum';
 import { studentService } from '../../services/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admission-status',
@@ -13,18 +14,24 @@ import { studentService } from '../../services/student.service';
 })
 export class AdmissionStatusComponent {
   constructor
-  (private admissionMessageService: AdmissionMessageService,
-     private fb: FormBuilder,
-     private admissionService:admissionService,
-     private studentService:studentService) { }
-  user!:any;
-  userId = localStorage.getItem('userId')
+    (private admissionMessageService: AdmissionMessageService,
+      private fb: FormBuilder,
+      private admissionService: admissionService,
+      private studentService: studentService,
+      private _router: Router) {  
+       }
+  user!: any;
+  private readonly userId = localStorage.getItem('userId')
   AdmissionStatus = admissionStatus;
   ngOnInit(): void {
-    if(this.userId){
-      this.studentService.getUserDetails(this.userId).subscribe((res:any)=>{
-        this.user = res.admssionDetails
-        console.log(res.admssionDetails)
+    if (this.userId) {
+      this.studentService.getUserDetails(this.userId).subscribe((res: any) => {
+
+        if (res.admssionDetails) {
+          this.user = res.admssionDetails
+        }else{
+          this._router.navigate(['/admission'])
+        }
       })
     }
     this.admissionMessageService.admissionMessage$.subscribe((message) => {
@@ -50,6 +57,6 @@ export class AdmissionStatusComponent {
   }
 
 
-  
+
 
 }

@@ -38,12 +38,14 @@ import { formReducer } from './components/admission/store/form.reducer';
 import { ConfirmationComponent } from './components/admission/confirmation/confirmation.component';
 import { FileDragNDropDirective } from 'src/app/common/directives/filedrag.directive';
 import { FileUploadValidatorDirective } from 'src/app/common/directives/file-filter.directive';
+import { PadStartPipe } from 'src/app/common/pipes/pad-start.pipe';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
     AdmissionComponent,
+    PadStartPipe,
     RegisterComponent,
     OtpModalComponent,
     LoginComponent,

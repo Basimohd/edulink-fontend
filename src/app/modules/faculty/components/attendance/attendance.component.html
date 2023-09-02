@@ -7,8 +7,11 @@
             <h2 class="text-xl font-medium text-gray-800 dark:text-navy-50 lg:text-2xl">
               Attendance
             </h2>
+            <p>
+              {{ batch.department.departmentName}} | {{batch.batch.startYear +"-"+ batch.batch.endYear }} 
+            </p>
           </div>
-          <div class="flex ">
+          <div class="flex pt-6">
             <p class="mr-2 mt-1">Date :    </p>
             <label class="block mr-2">
               <input (change)="onDateChange($event)" class="h-8 w-full rounded-full border placeholder:text-sm border-slate-300 bg-transparent px-4 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-indigo-600 dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
@@ -77,7 +80,7 @@
         </table>
         <div class="border-t-2">
           
-        <mat-paginator [pageSizeOptions]="[1]" showFirstLastButtons aria-label="Select page of assignments"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons aria-label="Select page of assignments"></mat-paginator>
       
         </div>
 </div>

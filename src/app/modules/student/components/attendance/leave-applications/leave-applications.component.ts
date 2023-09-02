@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { studentService } from '../../../service/student.service';
 import Swal from 'sweetalert2';
-import { leaveApplicationStatus } from 'src/app/common/enums/leave-status.enum';
+import { CommonStatus } from 'src/app/common/enums/leave-status.enum';
 
 @Component({
   selector: 'app-leave-applications',
@@ -10,7 +10,7 @@ import { leaveApplicationStatus } from 'src/app/common/enums/leave-status.enum';
 })
 export class LeaveApplicationsComponent {
   leaveApplications!:any;
-  leaveApplicationStatus = leaveApplicationStatus
+  CommonStatus = CommonStatus
 
   constructor(
     private _studentService: studentService

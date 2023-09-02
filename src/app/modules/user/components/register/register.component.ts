@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { authService } from '../../services/auth.service';
 import { OtpModalComponent } from '../otp-modal/otp-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -37,6 +37,9 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.pattern(GlobalConstants.passPattern)]],
       cPassword: ['', Validators.required],
     })
+  }
+  getControl(name: any): AbstractControl | null {
+    return this.registerForm.get(name);
   }
 
 

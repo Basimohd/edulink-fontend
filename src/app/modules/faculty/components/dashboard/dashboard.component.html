@@ -1,1 +1,199 @@
-<app-layout></app-layout>
+<app-layout>
+    <main class="main-content w-full px-20 pl-32 pt-20 pb-8">
+        <div
+          class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6"
+        >
+          <div class="col-span-12 lg:col-span-8 xl:col-span-9">
+            <div
+              class="card mt-12 bg-gradient-to-l from-pink-300 via-purple-400 to-indigo-500 p-5 sm:mt-0 sm:flex-row"
+            >
+              <div class="flex justify-center sm:order-last">
+                <img
+                  class="-mt-16 h-40 sm:mt-0"
+                  src="assets/Images/teacher.svg"
+                  alt="image"
+                />
+              </div>
+              <div
+                class="mt-2 flex-1 pt-2 text-center text-white sm:mt-0 sm:text-left"
+              >
+                <h3 class="text-xl">
+                  Welcome Back, <span class="font-semibold">{{facultyName}}</span>
+                </h3>
+                <p class="mt-2 leading-relaxed">
+                  You have graded
+                  <span class="font-semibold text-navy-700">{{submissionPerc}}%</span> of Submissions
+                </p>
+                <p>Progress is <span class="font-semibold">excellent!</span></p>
+
+                <a routerLink="/faculty/assignment" 
+                  class="btn mt-6 bg-slate-50 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80"
+                >
+                  View Assignments
+                </a>
+              </div>
+            </div>
+
+
+
+            <div class="mt-4 sm:mt-5 lg:mt-6">
+              <div class="flex items-center justify-between">
+                <h2
+                  class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
+                >
+                  Recent Submitted Assignemnt
+                </h2>
+                
+              </div>
+              <div class="card mt-3">
+                <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+                  <table class="is-hoverable w-full text-left">
+                    <thead>
+                      <tr>
+                        <th
+                          class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"
+                        >
+                          Assignemnt
+                        </th>
+                        <th
+                          class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"
+                        >
+                          Student
+                        </th>
+                        <th
+                          class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"
+                        >
+                          Last Updated
+                        </th>
+                        <th
+                          class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"
+                        >
+                          Graded
+                        </th>
+                        <th
+                          class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5"
+                        >
+                          View
+                        </th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let submission of recentSubmissions"
+                        class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500"
+                      >
+                      <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                        <div class="flex items-center space-x-4">
+                          <span class="w-52 font-medium text-slate-700 dark:text-navy-100 truncate">
+                            {{submission.title}}
+                          </span>
+                        </div>
+                      </td>
+                        <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          {{submission.studentId.admssionDetails.firstName + ' ' + submission.studentId.admssionDetails.lastName}}
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          {{submission.lastUpdated | date}}
+
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                          <ng-container *ngIf="submission.isGraded; else notGraded">
+              <div  class="badge rounded-full font-bold border border-green-500 text-green-500">Graded</div>
+
+                             ({{submission.grade}})
+                          </ng-container>
+                          <ng-template #notGraded>
+              <div class="badge rounded-full font-bold border border-red-500 text-red-500">Not Graded</div>
+
+                            
+                          </ng-template>
+                        </td>
+                        <td
+                          class="whitespace-nowrap px-4 py-3 font-medium text-slate-700 dark:text-navy-100 sm:px-5"
+                        >
+                        <fa-icon (click)="onView(submission.assignmentId)" class="text-gray-500 text-cen hover:text-indigo-700 cursor-pointer" [icon]="faeye"></fa-icon>
+
+                        </td>
+                        
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-4 xl:col-span-3">
+            <div
+              class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-1 lg:gap-6"
+            >
+              <div class="card pb-5">
+                <div class="mt-3 flex items-center justify-between px-4">
+                  <h2
+                    class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
+                  >
+                    Today's Attendance
+                  </h2>
+                
+                </div>
+                <div>
+                  <app-attendance-chart></app-attendance-chart>
+                </div>
+                <div class="px-4 text-center text-sm sm:px-5">
+                  <p>Department (Batch) :<br><span class="text-indigo-600"> {{departmentName}}({{batch}})</span></p>
+                </div>
+              </div>
+
+              <div class="card p-4 lg:order-last">
+                <div class="space-y-1 text-center font-inter text-xs+">
+                  <!-- Month header -->
+                  <div class="flex items-center justify-between px-2 pb-4">
+                    <p class="font-medium text-slate-700 dark:text-navy-100">
+                      {{ currentMonthName }} {{ currentYear }}
+                    </p>
+                    <div class="flex space-x-2">
+                      <button class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button class="btn h-7 w-7 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Days of the week -->
+                  <div class="grid grid-cols-7 pb-2">
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">SUN</div>
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">MON</div>
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">TUE</div>
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">WED</div>
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">THU</div>
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">FRI</div>
+                    <div class="text-sm font-semibold text-indigo-600 dark:text-accent-light">SAT</div>
+                  </div>
+                  <!-- Calendar days -->
+                  <ng-container *ngFor="let week of weeks">
+                    <div class="grid grid-cols-7 place-items-center">
+                      <button
+                        *ngFor="let day of week"
+                        class="flex h-7 w-9 items-center justify-center rounded-xl cursor-default"
+                        [ngClass]="{'text-slate-900 hover:bg-indigo-600/10 hover:text-indigo-600':day.currentMonth}"
+                        [ngClass]="{'text-slate-400 hover:bg-accent-light hover:text-accent-light':!day.currentMonth}"
+                        [ngClass]="{'text-indigo-600 font-medium':day.isToday}"
+                      >
+                        {{ day.day }}
+                      </button>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+             
+            </div>
+          </div>
+        </div>
+      </main>
+</app-layout>

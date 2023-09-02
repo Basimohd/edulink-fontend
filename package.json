@@ -56,6 +56,7 @@
     "ngx-export-as": "^1.16.0",
     "ngx-filepond": "^7.0.1",
     "ngx-loading-buttons": "^16.0.0",
+    "ngx-socket-io": "^4.5.1",
     "ngx-stripe": "^16.2.0",
     "ngx-toastr": "^17.0.2",
     "pdfmake": "^0.2.7",

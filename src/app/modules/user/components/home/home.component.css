@@ -1,0 +1,50 @@
+.bg-shape{
+    background-image: url(../../../../../assets/Images/shape.svg);
+}
+.bg-image1{
+    background-image: linear-gradient(to bottom, rgba(250, 250, 250, 0), rgba(249,250,251, 0.89)), url(../../../../../assets/Images/3.png );
+    
+}
+.bg-image2{
+    background-image:  url(../../../../../assets/Images/section-bg-16.png);
+    
+    
+}
+.bg-image3{
+    background-image:  url(../../../../../assets/Images/footer-bg-1.png);
+    
+    
+}
+.bg-shape2{
+    background-image: url(../../../../../assets/Images/line-shape.svg);
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-bottom: 0.5rem;
+    --tw-text-opacity: 1;
+    background-size: 100%;
+    background-position: center bottom;
+}
+
+.mini-title {
+    margin-bottom: 0.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+}
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+

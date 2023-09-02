@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { studentService } from '../../../services/student.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { leaveApplicationStatus } from 'src/app/common/enums/leave-status.enum';
+import { CommonStatus } from 'src/app/common/enums/leave-status.enum';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class LeaveApplicationsComponent {
   leaveApplications!:any;
-  leaveApplicationStatus = leaveApplicationStatus
+  CommonStatus = CommonStatus
   constructor(
     private _studentService: studentService,
     public dialog: MatDialog,
@@ -20,7 +20,7 @@ export class LeaveApplicationsComponent {
   ngOnInit(){
     this.leaveApplications = this.data.studentDetails.leaveApplications
   }
-  onStatusChange(status : leaveApplicationStatus,leaveId:string){
+  onStatusChange(status : CommonStatus,leaveId:string){
     let updateData ={
       status:status,
       studentId:this.data.studentDetails._id,
@@ -28,7 +28,7 @@ export class LeaveApplicationsComponent {
     }
     let textStatus = ''
     let statusText = 'Reject'
-    if(status == leaveApplicationStatus.Approved ){
+    if(status == CommonStatus.Approved ){
       textStatus = ' It will Automatically Mark as Absent'
       statusText = 'Approve'
     }

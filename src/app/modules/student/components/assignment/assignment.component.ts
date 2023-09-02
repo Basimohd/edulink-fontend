@@ -37,6 +37,8 @@ export class AssignmentComponent {
   loadAssignmentDetails() {
     const studentId = localStorage.getItem('userId')
     this._assignmentService.fetchAssignmentsByDepartment(studentId).subscribe((res: any) => {
+      console.log(res);
+      
       this.assignments = new MatTableDataSource<any>(res);
       this.assignments.paginator = this.paginatior;
       this.dataAvailable = res.length > 0;

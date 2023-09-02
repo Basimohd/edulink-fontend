@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { authService } from '../../services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -21,6 +21,7 @@ export class LoginComponent {
   passwordError: boolean = false;
   accessError: boolean = false;
   loginForm !: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private service: authService,
@@ -46,7 +47,7 @@ export class LoginComponent {
       google.accounts.id.renderButton(
         // @ts-ignore
         document.getElementById("buttonDiv"),
-        { theme: "outline", size: "large", width: "324",height: "200",text: "continue_with", }
+        { theme: "outline", size: "large", width: 324,height: 200,text: "continue_with", }
       );
       // @ts-ignore
       google.accounts.id.prompt((notification: PromptMomentNotification) => { });
@@ -64,6 +65,10 @@ export class LoginComponent {
         this.resErrHandler(err)
       }
     );
+  }
+
+    getControl(name: any): AbstractControl | null {
+    return this.loginForm.get(name);
   }
 
 
@@ -86,8 +91,10 @@ export class LoginComponent {
   loginRes(res:any) {
     localStorage.setItem('userToken', res.token)
     localStorage.setItem('userId', res.id)
-    if (!res.data.admissionDetails) {
+    if (!res.data.admssionDetails) {
       this.router.navigate(['/admission'])
+    }else{
+      this.router.navigate(['/student'])
     }
   }
   resErrHandler(err: HttpErrorResponse) {

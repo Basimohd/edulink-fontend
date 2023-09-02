@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StudentRoutingModule } from './student-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FeesComponent } from './components/fees/fees.component';
 import { FeeInvoiceComponent } from './components/fees/fee-invoice/fee-invoice.component';
@@ -28,6 +28,9 @@ import { FilePondModule, registerPlugin } from "ngx-filepond";
 import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import { FileUploadComponent } from 'src/app/shared/file-upload/file-upload.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { AddGroupComponent } from './components/chat/add-group/add-group.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 registerPlugin(FilePondPluginFileValidateSize,FilePondPluginFileValidateType);
 
@@ -47,7 +50,10 @@ registerPlugin(FilePondPluginFileValidateSize,FilePondPluginFileValidateType);
     LeaveApplicationsComponent,
     AssignmentComponent,
     AssignmentDetailComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ChatComponent,
+    AddGroupComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -60,6 +66,7 @@ registerPlugin(FilePondPluginFileValidateSize,FilePondPluginFileValidateType);
     FontAwesomeModule,
     FilePondModule,
     MatTableModule,
+    FormsModule,
     MatPaginatorModule,
   ]
 })

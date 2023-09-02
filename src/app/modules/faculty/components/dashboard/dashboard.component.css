@@ -1,0 +1,14 @@
+
+.btn {
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    letter-spacing: .025em;
+    padding: 0.5rem 1.25rem;
+    text-align: center;
+    transition-duration: .2s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+}

@@ -13,5 +13,5 @@ export class AppComponent {
   loading$ = this.loader.loading$;
 
   
-  title = 'school-management';
+  title = 'Edulink College-Management';
 }

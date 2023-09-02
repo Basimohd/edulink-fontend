@@ -17,12 +17,14 @@
             >
               CLOSED
             </div>
-            <div
-              *ngIf="submissions.isGraded"
+            <ng-container *ngIf="submissions">
+              <div
+              *ngIf="submissions.isGraded "
               class="badge rounded-full font-bold border border-blue-500 text-blue-500"
             >
               GRADED
             </div>
+            </ng-container>
           </dt>
         </div>
       </div>
@@ -41,7 +43,7 @@
             </div>
           </dt>
         </div>
-        <div class="mt-4" *ngIf="!submissions.isGraded">
+        <div class="mt-4" *ngIf="!submissions.isGraded || !submissions">
           <label class="font-medium text-sm" for=""
             >Submit Assignment Files
           </label>

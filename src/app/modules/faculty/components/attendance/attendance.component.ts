@@ -56,8 +56,6 @@ export class AttendanceComponent {
     let facultyId = localStorage.getItem('facultyId')
     this._studentService.fetchStudentsByDepartment(facultyId).subscribe((res)=>{
       if(res){
-        console.log(res);
-        
         let students = res.students
         this.batch = res.batch
         students.forEach((student:any)=>{

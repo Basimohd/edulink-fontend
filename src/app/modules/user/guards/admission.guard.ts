@@ -26,7 +26,6 @@ export class AdmissionGuard implements CanActivate {
 
     return this.studentService.getUserDetails(userId).toPromise()
       .then((userDetails) => {
-        console.log(userDetails)
         if (userDetails && userDetails.admssionDetails) {
           this.router.navigate(['/admission-status']);
           this.admissionMessageService.setAdmissionMessage('You have already taken an admission enquiry.');

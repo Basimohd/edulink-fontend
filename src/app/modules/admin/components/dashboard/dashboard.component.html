@@ -1,6 +1,106 @@
+<app-sidebar></app-sidebar>
+<main
+  class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200"
+>
+  <app-navbar [breadcrumb]="breadcrumbName"></app-navbar>
+  <div
+    class="grid grid-cols-1 gap-6 mb-6 w-full xl:grid-cols-2 2xl:grid-cols-4 pl-10 pr-14 mt-4"
+  >
+    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4">
+      <div class="flex items-center">
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-12 h-12 text-white  bg-gradient-to-tl from-purple-700 to-pink-500 rounded-lg shadow-md shadow-gray-300"
+        >
+        <fa-icon class="text-white" [icon]="faTicket"></fa-icon>
+        </div>
+        <div class="flex-shrink-0 ml-3">
+          <span class="text-2xl font-bold leading-none text-gray-900"
+            >{{admissionEnquiryCount}}</span
+          >
+          <h3 class="text-base font-normal text-gray-500">Admission Enquiry</h3>
+        </div>
+        
+      </div>
+    </div>
+    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4">
+      <div class="flex items-center">
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-12 h-12 text-white bg-gradient-to-tl from-purple-700 to-pink-500 rounded-lg shadow-md shadow-gray-300"
+        >
+        <fa-icon class="text-white" [icon]="faUsers"></fa-icon>
 
-    <app-sidebar ></app-sidebar>
-<main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
-<app-navbar [breadcrumb]="breadcrumbName" ></app-navbar>
+        </div>
+        <div class="flex-shrink-0 ml-3">
+          <span class="text-2xl font-bold leading-none text-gray-900"
+            >{{studentCount}}</span
+          >
+          <h3 class="text-base font-normal text-gray-500">Total Students</h3>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4 ">
+      <div class="flex items-center">
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-12 h-12 text-white bg-gradient-to-tl from-purple-700 to-pink-500 rounded-lg shadow-md shadow-gray-300"
+        >
+        <fa-icon class="text-white" [icon]="faChalkboardTeacher"></fa-icon>
 
+        </div>
+        <div class="flex-shrink-0 ml-3">
+          <span class="text-2xl font-bold leading-none text-gray-900"
+            >{{facultyCount}}</span
+          >
+          <h3 class="text-base font-normal text-gray-500">Total Faculties</h3>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4">
+      <div class="flex items-center">
+        <div
+          class="inline-flex flex-shrink-0 justify-center items-center w-12 h-12 text-white bg-gradient-to-tl from-purple-700 to-pink-500 rounded-lg shadow-md shadow-gray-300"
+        >
+        <fa-icon class="text-white" [icon]="faSchool"></fa-icon>
+
+        </div>
+        <div class="flex-shrink-0 ml-3">
+          <span class="text-2xl font-bold leading-none text-gray-900"
+            >{{departmentCount}}</span
+          >
+          <h3 class="text-base font-normal text-gray-500">Total Departments</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card col-span-12 lg:col-span-8  ml-10 mr-14 ">
+    <div
+      class="mt-3 flex flex-col justify-between px-4 sm:flex-row sm:items-center sm:px-5"
+    >
+      <div
+        class="flex flex-1 items-center justify-between space-x-2 sm:flex-initial"
+      >
+        <h2
+          class="text-sm+ font-medium tracking-wide text-slate-700 dark:text-navy-100"
+        >
+          Admission Enquiries
+        </h2>
+      
+      </div>
+      <div id="overview-tab" class="hidden space-x-2 sm:flex">
+        
+        <button
+          data-target="#overview-tab-yearly"
+          class="tab btn h-8 rounded-full text-xs+ font-medium"
+          data-active-class="bg-primary/10 text-primary dark:bg-accent-light/10 dark:text-accent-light"
+          data-default-class="hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 hover:text-slate-800 focus:text-slate-800 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 dark:hover:text-navy-100 dark:focus:text-navy-100"
+        >
+          Yearly
+        </button>
+      </div>
+    </div>
+
+
+    <div class="ax-transparent-gridline mt-2 px-2">
+        <app-admission-chart></app-admission-chart>
+    </div>
+  </div>
 </main>

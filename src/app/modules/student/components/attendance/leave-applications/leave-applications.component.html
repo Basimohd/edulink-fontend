@@ -17,16 +17,16 @@
              <p class="font-medium">Reason : {{leave.reason}}</p>
          
             </div>
-            <div  class="col-span-3 flex justify-end text-right" *ngIf="leave.status == leaveApplicationStatus.Pending">
+            <div  class="col-span-3 flex justify-end text-right" *ngIf="leave.status == CommonStatus.Pending">
              <mat-icon class="text-red-600  text-right cursor-pointer" (click)="onDelete(leave._id)">close</mat-icon>
             </div>
-            <div *ngIf="leave.status == leaveApplicationStatus.Approved" class="sm:col-span-3  col-span-12 flex justify-end items-center gap-2">
+            <div *ngIf="leave.status == CommonStatus.Approved" class="sm:col-span-3  col-span-12 flex justify-end items-center gap-2">
               <a type="button"
               class="px-3 py-1 text-sm rounded-full bg-green-500 font-medium text-white hover:bg-green-500-focus focus:bg-green-500-focus active:bg-green-500-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
               Approved
             </a>
             </div>
-            <div *ngIf="leave.status == leaveApplicationStatus.Rejected" class="sm:col-span-3  col-span-12 flex justify-end items-center gap-2">
+            <div *ngIf="leave.status == CommonStatus.Rejected" class="sm:col-span-3  col-span-12 flex justify-end items-center gap-2">
               
               <a type="button"
               class="px-3 py-1 text-sm rounded-full bg-red-500 font-medium text-white hover:bg-red-500-focus focus:bg-red-500-focus active:bg-red-500-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">

@@ -17,23 +17,23 @@
              <p class="font-medium">Reason : {{leave.reason}}</p>
          
             </div>
-            <div *ngIf="leave.status == leaveApplicationStatus.Pending" class="sm:col-span-5  col-span-12 flex justify-center items-center gap-2">
-              <button (click)="onStatusChange(leaveApplicationStatus.Approved,leave._id)"  type="button"
+            <div *ngIf="leave.status == CommonStatus.Pending" class="sm:col-span-5  col-span-12 flex justify-center items-center gap-2">
+              <button (click)="onStatusChange(CommonStatus.Approved,leave._id)"  type="button"
               class="px-3 py-1 text-sm rounded-full bg-green-500 font-medium text-white hover:bg-green-500-focus focus:bg-green-500-focus active:bg-green-500-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
               Approve
             </button>
-              <button (click)="onStatusChange(leaveApplicationStatus.Rejected,leave._id)" type="button"
+              <button (click)="onStatusChange(CommonStatus.Rejected,leave._id)" type="button"
               class="px-3 py-1 text-sm rounded-full bg-red-500 font-medium text-white hover:bg-red-500-focus focus:bg-red-500-focus active:bg-red-500-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
               Reject
             </button>
             </div>
-            <div *ngIf="leave.status == leaveApplicationStatus.Approved" class="sm:col-span-5  col-span-12 flex justify-end items-center gap-2">
+            <div *ngIf="leave.status == CommonStatus.Approved" class="sm:col-span-5  col-span-12 flex justify-end items-center gap-2">
               <a type="button"
               class="px-3 py-1 text-sm rounded-full bg-green-500 font-medium text-white hover:bg-green-500-focus focus:bg-green-500-focus active:bg-green-500-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
               Approved
             </a>
             </div>
-            <div *ngIf="leave.status == leaveApplicationStatus.Rejected" class="sm:col-span-5  col-span-12 flex justify-end items-center gap-2">
+            <div *ngIf="leave.status == CommonStatus.Rejected" class="sm:col-span-5  col-span-12 flex justify-end items-center gap-2">
               
               <a type="button"
               class="px-3 py-1 text-sm rounded-full bg-red-500 font-medium text-white hover:bg-red-500-focus focus:bg-red-500-focus active:bg-red-500-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">

@@ -11,6 +11,14 @@ import autoTable from 'jspdf-autotable'
 import { DatePipe } from '@angular/common'
 import { EditFacultyComponent } from './edit-faculty/edit-faculty.component';
 
+interface Faculty {
+  facultyId: string;
+  facultyName: string;
+  phoneNumber: string;
+  email: string;
+  mainSubject: string;
+  joinedAt: Date;
+}
 @Component({
   selector: 'app-faculties',
   templateUrl: './faculties.component.html',
@@ -18,7 +26,7 @@ import { EditFacultyComponent } from './edit-faculty/edit-faculty.component';
 })
 export class FacultiesComponent implements OnInit{
   breadcrumbName="Faculties"
-  facultiesData !: any[];
+  facultiesData !: Faculty[];
   dataSource: any;
   displayedColumns: string[] = ["faculty", "contact", "subject", "joinedAt", "action"];
   searchText: string = '';

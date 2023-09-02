@@ -6,6 +6,7 @@ import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { NavigationExtras, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Assignment } from '../../interfaces/assignment.interface'
 
 @Component({
   selector: 'app-assignment',
@@ -13,14 +14,13 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent {
-  assignments!: MatTableDataSource<any>;
+  assignments!: MatTableDataSource<Assignment>;
   displayedColumns: string[] = ['number', 'title', 'department', 'dueDate', 'status', 'action'];
   searchText: string = '';
   @ViewChild(MatPaginator) paginatior !: MatPaginator;
   dataAvailable: boolean = true;
-
   faeye = faEye;
-
+  private readonly facultyId = localStorage.getItem('facultyId')
 
   constructor(
     private _assignmentService:AssingmentService,
@@ -33,10 +33,8 @@ export class AssignmentComponent {
   }
   
   loadAssignments(){
-    const facultyId = localStorage.getItem('facultyId')
-    this._assignmentService.fetchAssignments(facultyId).subscribe((res:any)=>{
-      console.log(res);
-      this.assignments = new MatTableDataSource<any>(res);
+    this._assignmentService.fetchAssignments(this.facultyId).subscribe((res:any)=>{
+      this.assignments = new MatTableDataSource<Assignment>(res);
       this.assignments.paginator = this.paginatior;
       this.dataAvailable = res.length > 0;
       this.assignments.filterPredicate = this.FilterPredicate();
@@ -55,27 +53,19 @@ export class AssignmentComponent {
     const filterValue = searchText
     this.assignments.filter = filterValue.trim().toLowerCase();
     this.dataAvailable = this.assignments.filteredData.length > 0;
-
   }
-
 
   FilterPredicate() {
     return (row: any, filters: string) => {
       const searchText = filters;
-
       const columnStudent = row.title;
-
       const customFilterStudent = columnStudent.toLowerCase().includes(searchText);
-
       return customFilterStudent;
     };
   }
 
   onAdd(){
-    const dialogRef = this.dialog.open(AddAssignmentComponent, {
-      data: {}
-    });
-
+    const dialogRef = this.dialog.open(AddAssignmentComponent)
     dialogRef.afterClosed().subscribe(() => {
       this.loadAssignments()
     })

@@ -9,6 +9,7 @@ import { DepartmentComponent } from './components/department/department.componen
 import { FacultiesComponent } from './components/faculties/faculties.component';
 import { BatchesComponent } from './components/batches/batches.component';
 import { AuthReverseGuard } from './guards/auth-reverse.guard';
+import { StudentsComponent } from './components/students/students.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'department',component:DepartmentComponent,canActivate:[AuthGuard]},
   {path:'batches',component:BatchesComponent,canActivate:[AuthGuard]},
   {path:'faculties',component:FacultiesComponent,canActivate:[AuthGuard]},
+  {path:'students',component:StudentsComponent,canActivate:[AuthGuard]},
 ];
 
 @NgModule({
