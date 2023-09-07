@@ -14,9 +14,10 @@ import { GuardianDetailsComponent } from './components/admission/guardian-detail
 import { PreviousEducationComponent } from './components/admission/previous-education/previous-education.component';
 import { ConfirmationComponent } from './components/admission/confirmation/confirmation.component';
 import { StepValidityGuard } from './guards/admission-form.guard';
-
+import { DepartmentsComponent } from './components/departments/departments.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'department', component: DepartmentsComponent },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuardReverese] },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuardReverese] },
   { path: 'admission', component: AdmissionComponent, canActivate: [AdmissionGuard] ,children:[

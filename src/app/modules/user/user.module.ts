@@ -39,6 +39,7 @@ import { ConfirmationComponent } from './components/admission/confirmation/confi
 import { FileDragNDropDirective } from 'src/app/common/directives/filedrag.directive';
 import { FileUploadValidatorDirective } from 'src/app/common/directives/file-filter.directive';
 import { PadStartPipe } from 'src/app/common/pipes/pad-start.pipe';
+import { DepartmentsComponent } from './components/departments/departments.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { PadStartPipe } from 'src/app/common/pipes/pad-start.pipe';
     ConfirmationComponent,
     FileDragNDropDirective,
     FileUploadValidatorDirective,
+    DepartmentsComponent,
   ],
   imports: [
     CommonModule,

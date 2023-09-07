@@ -16,4 +16,9 @@ export class studentService {
     getUserDetails(userId:string|null){
         return this.http.get<UserDetails>(`${this.domain}user/${userId}`)
     }
+
+    fetchDepartment(){
+        return this.http.get(`${this.domain}admin/departments`);
+    }
+
 }
