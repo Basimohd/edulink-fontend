@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UserDetails } from '../interfaces/user.interface'
 import { environment } from 'src/environments/environment';
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class admissionService {
     private domain!: string | undefined;
 

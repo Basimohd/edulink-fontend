@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { studentService } from '../../services/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './departments.component.html',
@@ -9,7 +10,8 @@ export class DepartmentsComponent {
   departments!:any[]
 
   constructor(
-    private _departmentService:studentService
+    private _departmentService:studentService,
+    private _router:Router
   ){}
 
   ngOnInit() { 
@@ -18,9 +20,11 @@ export class DepartmentsComponent {
 
   loadDepartments(){
     this._departmentService.fetchDepartment().subscribe((res:any)=>{
-      console.log(res);
-      
       this.departments = res.departments
     })
+  }
+
+  onDepartment(departmentId: string){
+    this._router.navigate(['/department/details'], { queryParams: { id: departmentId } });
   }
 }

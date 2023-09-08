@@ -5,6 +5,7 @@ import { admissionService } from '../../services/admission.service';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { Router } from '@angular/router';
 import { DepartmentService } from 'src/app/modules/admin/services/department.service';
+import { studentService } from '../../services/student.service';
 @Component({
   selector: 'app-admission',
   templateUrl: './admission.component.html',
@@ -14,7 +15,7 @@ export class AdmissionComponent {
 
   constructor(
     private fb: FormBuilder,
-    private departmentService: DepartmentService,
+    private departmentService: studentService,
   ) { }
   
   departments:any[] = []

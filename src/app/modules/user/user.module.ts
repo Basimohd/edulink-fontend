@@ -40,6 +40,10 @@ import { FileDragNDropDirective } from 'src/app/common/directives/filedrag.direc
 import { FileUploadValidatorDirective } from 'src/app/common/directives/file-filter.directive';
 import { PadStartPipe } from 'src/app/common/pipes/pad-start.pipe';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { DepartmentDetailsComponent } from './components/departments/department-details/department-details.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { admissionService } from './services/admission.service';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,9 @@ import { DepartmentsComponent } from './components/departments/departments.compo
     FileDragNDropDirective,
     FileUploadValidatorDirective,
     DepartmentsComponent,
+    ContactComponent,
+    DepartmentDetailsComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +84,7 @@ import { DepartmentsComponent } from './components/departments/departments.compo
     ButtonModule,
     MatProgressSpinnerModule,
     StoreModule.forFeature('form',formReducer),
-  ]
+  ],
+  providers: [admissionService],
 })
 export class UserModule { }

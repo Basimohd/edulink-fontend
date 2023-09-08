@@ -9,6 +9,7 @@ import { DepartmentService } from 'src/app/modules/admin/services/department.ser
 import { getCourseForm } from '../store/form.selector';
 import { CourseForm } from '../store/form.interface';
 import { updateCourseForm } from '../store/form.action';
+import { studentService } from '../../../services/student.service';
 
 @Component({
   selector: 'app-course-details',
@@ -26,7 +27,7 @@ export class CourseDetailsComponent {
 
   constructor(
     private fb: FormBuilder,
-    private departmentService: DepartmentService,
+    private departmentService: studentService,
     private _store: Store,
     private _router: Router
   ) { }

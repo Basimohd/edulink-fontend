@@ -18,7 +18,7 @@ export class studentService {
     }
 
     fetchDepartment(){
-        return this.http.get(`${this.domain}admin/departments`);
+        return this.http.get(`${this.domain}user/departments`);
     }
 
 }

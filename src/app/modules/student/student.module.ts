@@ -27,7 +27,7 @@ import { AssignmentDetailComponent } from './components/assignment/assignment-de
 import { FilePondModule, registerPlugin } from "ngx-filepond";
 import * as FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
-import { FileUploadComponent } from 'src/app/shared/file-upload/file-upload.component';
+import { FileUploadComponent } from 'src/app/shared/components/file-upload/file-upload.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { AddGroupComponent } from './components/chat/add-group/add-group.component';
 import { ProfileComponent } from './components/profile/profile.component';

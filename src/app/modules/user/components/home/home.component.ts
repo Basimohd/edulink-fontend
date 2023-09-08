@@ -20,18 +20,26 @@ export class HomeComponent {
   }
   testimonials = [
     {
-      quote: '“It’s Truly The Best Solution For Me”',
-      content: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.',
-      author: 'Alfred Helmerich',
-      position: 'Executive Training Manager'
+      url:"https://images.pexels.com/photos/4342401/pexels-photo-4342401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      quote: '“Edulink College: A Beacon of Educational Excellence”',
+      content: 'I have witnessed Edulink College transform lives through its dedication to academic excellence and holistic development. The institutions commitment to nurturing talent is truly commendable.',
+      author: 'Dr. Samantha Mitchell',
+      position: 'Principal, Edulink College'
     },
     {
-      quote: '“It’s Truly Tahe Best Solution For Me”',
-      content: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.',
-      author: 'Alfred Helmerich',
-      position: 'Executive Training Manager'
+      url:"../../../../../assets/Images/principal.png",
+      quote: '“Edulink: Shaping Future Leaders with Distinction”',
+      content: 'Edulink College stands as a paragon of educational institutions, molding students into confident and capable leaders. Its innovative curriculum and devoted faculty set a benchmark for excellence.',
+      author: 'Prof. Benjamin Davidson',
+      position: 'Dean, Edulink College'
     },
-    // Add more testimonial objects here
+    {
+      url:"https://images.pexels.com/photos/6326377/pexels-photo-6326377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      quote: '“Edulink College: Fostering Knowledge and Innovation”',
+      content: 'Edulink College has consistently demonstrated a commitment to fostering a culture of knowledge and innovation. Its a privilege to lead an institution that empowers students to excel in their chosen fields.',
+      author: 'Dr. Olivia Thompson',
+      position: 'Director, Edulink College'
+    }
   ];
 
   currentSlideIndex = 0;

@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { ErrorHandler, NgModule, isDevMode } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,7 +45,8 @@ import { environment } from 'src/environments/environment';
 
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { ErrorhandlerInterceptor } from './interceptors/errorhandler.interceptor';
 
 const config: SocketIoConfig = { url: environment.domain, options: {} };
 
@@ -92,8 +93,9 @@ const config: SocketIoConfig = { url: environment.domain, options: {} };
     SocketIoModule.forRoot(config)
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS,useClass: LoadingInterceptor, multi: true}, 
-    {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorhandlerInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}, 
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

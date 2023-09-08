@@ -1,17 +1,39 @@
-mat-progress-spinner{
-    position: absolute;
+
+
+  h1{
+    margin: 1em 0;
+    border-bottom: 1px dashed;
+    padding-bottom: 1em;
+    font-weight: lighter;
+  }
+  p{
+    font-style: italic;
+  }
+  .loader{
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    position: fixed;
     top: 50%;
     left:50%;
     transform: translate(-50%,-50%);
-    z-index: 3;
-}
+    z-index: 101;
+  }
+  
+  /*
+    Set the color of the icon
+  */
+  svg path,
+  svg rect{
+    fill: #5850ec;
+  }
 
-.overlay{
-    position: absolute;
+  .overlay{
+    position: fixed; 
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 2;
-    backdrop-filter: blur(2px);
+    z-index: 100;
+    backdrop-filter: blur(5px);
 }

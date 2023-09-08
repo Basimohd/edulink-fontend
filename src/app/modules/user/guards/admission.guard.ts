@@ -3,6 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { admissionService } from '../services/admission.service';
 import { AdmissionMessageService } from '../services/admission-message.service';
 import { studentService } from '../../user/services/student.service';
+import { admissionStatus } from '../components/admission-status/admission.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,11 @@ export class AdmissionGuard implements CanActivate {
       .then((userDetails) => {
         if (userDetails && userDetails.admssionDetails) {
           this.router.navigate(['/admission-status']);
-          this.admissionMessageService.setAdmissionMessage('You have already taken an admission enquiry.');
+          if(userDetails.admssionDetails.admissionStatus === admissionStatus.PENDING){
+            this.admissionMessageService.setAdmissionMessage('You Admission is not Approved Yet');
+          }else{
+            this.admissionMessageService.setAdmissionMessage('You have already taken an admission enquiry.');
+          }
           return false;
         } else {
           return true;

@@ -1,0 +1,16 @@
+.bg-image{
+    background-image: url(../../../../../assets/Images/bred.png);
+
+}
+.bg-shape{
+    background-image: url(../../../../../assets/Images/line-shape.svg);
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-bottom: .9rem;
+    --tw-text-opacity: 1;
+    background-size: 100%;
+    background-position: center bottom;
+}
+.img-svg{
+    height: 42px;
+}

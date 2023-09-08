@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<div class="breadcrumbs py-[130px] bg-image mt-19.5  bg-cover bg-center bg-no-repeat">
+    <div class="container text-center">
+      <h2 class=" text-4xl mb-2 font-semibold text-black">Department</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item"><a href="index.html">Pages </a></li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">{{departmentDetails.departmentName}}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="lg:mx-60 mt-14 mb-14">
+    <div class="mb-5">
+        <p class="text-3xl font-semibold text-black">{{departmentDetails.departmentName}}</p>
+    </div>
+    <div>
+        <p class="text-justify">{{departmentDetails.description}}</p>
+    </div>
+    
+    <p class="text-xl font-medium my-4">Faculties</p>
+    <div class="mb-9 mt-14">
+        <div class="container">
+          <div class="grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2 grid-cols-1 gap-[30px] pt-10 ">
+            <div >
+            <div class="mx-auto w-32 h-32 relative -mt-16 border-4  rounded-full overflow-hidden hover:border cursor-pointer  flex justify-center items-center " >
+                <img class="object-cover object-center h-32"  [src]="'https://api.edulinkcollege.online/uploads/' + departmentDetails.HOD.profilePicture"  alt='Woman looking front'>
+            </div>
+            <div class="text-center mt-2">
+                <h2 class="font-semibold">{{departmentDetails.HOD.facultyName}}</h2>
+                <p class="text-gray-500">HOD</p>
+            </div>
+           </div>
+            <div *ngFor="let professor of departmentDetails.professors">
+            <div class="mx-auto w-32 h-32 relative -mt-16 border-4  rounded-full overflow-hidden hover:border cursor-pointer  flex justify-center items-center " >
+                <img class="object-cover object-center h-32" [src]="'https://api.edulinkcollege.online/uploads/' + professor.profilePicture" alt='Woman looking front'>
+            </div>
+            <div class="text-center mt-2">
+                <h2 class="font-semibold">{{professor.facultyName}}</h2>
+                <p class="text-gray-500">{{professor.mainSubject}}, Professor</p>
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+
+    <p class="text-xl font-medium my-4">Fees Structure</p>
+    
+
+    <div class="card mt-3 mb-4">
+        <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
+          <table class="is-hoverable w-full text-left">
+      
+            <!-- Table Header -->
+            <thead>
+              <tr>
+                <th class="whitespace-nowrap text-sm rounded-tl-lg px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5 bg-slate-100">#</th>
+                <th class="whitespace-nowrap text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">TUTION FEES</th>
+                <th class="whitespace-nowrap text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">HOSTEL FEES</th>
+                <th class="whitespace-nowrap text-center text-sm bg-slate-100 px-4 py-3 font-semibold uppercase text-gray-700 dark:bg-navy-text-gray-700 dark:text-navy-100 lg:px-5">EXAM FEES</th>
+              </tr>
+            </thead>
+      
+            <!-- Table Body -->
+            <tbody>
+              <!-- Use *ngFor loop to iterate through assignments and generate rows -->
+              <tr *ngFor="let fees of departmentDetails.fees; let i = index">
+                <td class="whitespace-nowrap text-sm px-4 py-3 sm:px-5">{{ i + 1 }}</td>
+                <td class="whitespace-nowrap text-sm px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">{{ fees.tutionFees }}</td>
+                <td class="whitespace-nowrap text-sm px-4 py-3 sm:px-5">{{ fees.hostelFees }}</td>
+                <td class="whitespace-nowrap text-sm text-center px-4 py-3 sm:px-5">{{ fees.examFees }}</td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="border-t-2">
+          <!-- Add pagination if needed -->
+        </div>
+      </div>
+  </div>
+
+<app-footer></app-footer>
