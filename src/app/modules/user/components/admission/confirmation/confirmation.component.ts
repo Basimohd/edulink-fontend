@@ -66,7 +66,7 @@ export class ConfirmationComponent {
     };
     reader.readAsDataURL(this.file!);
   }
-  onValidationMessage(message: string): void {
+  onValidationMessage(message: any): void {
     this.message = message
   }
 

@@ -15,7 +15,8 @@ export class AddFacultyComponent {
   isLoading:boolean = false;
   submitted: boolean = false;
   facultyForm!: FormGroup;
-  file!: File;
+  file!: File | null;
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -38,8 +39,8 @@ export class AddFacultyComponent {
     this.submitted = true;
     if (this.facultyForm.valid) {
       let formData = new FormData();
-      if (this.facultyForm && this.facultyForm.controls) {
-        formData.append('file', this.file)
+      if (this.facultyForm && this.facultyForm.controls && this.file) {
+        formData.append('file', this.file as File)
         Object.keys(this.facultyForm.controls).forEach((controlName: string) => {
           const control = this.facultyForm.get(controlName);
           if (control && control.valid) {
@@ -64,9 +65,19 @@ export class AddFacultyComponent {
   }
 
   onFileSelected(event: any) {
-    console.log("asdf")
-    if (event.target.files.length > 0) {
-      this.file = event.target.files[0];
+    const selectedFile = event.target.files[0];
+  
+    if (selectedFile) {
+      const fileSize = selectedFile.size / (1024 * 1024); // Convert to MB
+  
+      if (fileSize <= 2 && selectedFile.type.startsWith('image/')) {
+        this.file = selectedFile;
+        this.errorMessage = null; // Reset error message if conditions are met
+      } else {
+        this.file = null;
+        this.errorMessage = 'Please select a valid image file (up to 2MB).';
+        event.target.value = '';
+      }
     }
   }
 }

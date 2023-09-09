@@ -55,7 +55,7 @@ const config: SocketIoConfig = { url: environment.domain, options: {} };
   declarations: [
     AppComponent,
     DurationDirective,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

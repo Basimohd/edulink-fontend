@@ -66,7 +66,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     EditDepartmentComponent,
     EditBatchComponent,
     PositiveNumberDirective,
-    AdmissionChartComponent
+    AdmissionChartComponent,
+    
   ],
   imports: [
     CommonModule,
