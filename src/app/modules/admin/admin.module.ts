@@ -85,7 +85,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MatSortModule,
     HttpClientModule,
     ExportAsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
   ],
   providers: [DatePipe,CurrencyPipe]
 })

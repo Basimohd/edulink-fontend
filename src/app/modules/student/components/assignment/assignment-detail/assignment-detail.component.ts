@@ -64,6 +64,7 @@ export class AssignmentDetailComponent {
       return 'Unknown Filename';
     }
   }
+  
   pondOptions: FilePondOptions = {
     allowMultiple: true,
     maxFileSize: '5MB',
